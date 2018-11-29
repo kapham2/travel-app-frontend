@@ -1,28 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter, Route, Switch/*, Redirect*/ } from 'react-router-dom'
+import { connect } from 'react-redux'
 import './App.css';
+import '../node_modules/semantic-ui-css/semantic.css'
 
-class App extends Component {
+import PrivateRoute from './components/PrivateRoute'
+import LoginContainer from './components/LoginContainer'
+import UserContainer from './components/UserContainer'
+class App extends Component { 
+
+  componentDidMount() {
+    if (localStorage.getItem("token")) {
+      fetch('http://localhost:3333/api/v1/users/user', {
+        headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(response => response.json())
+      .then(response => this.props.setUser(response))
+
+      fetch('http://localhost:3333/api/v1/user_destinations', {
+        headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(response => response.json())
+      .then(response => this.props.setUserDestinations(response))
+
+      fetch('http://localhost:3333/api/v1/follows', {
+        headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+      })
+      .then(response => response.json())
+      .then(response => this.props.setFollows(response))
+    }
+  }
+  
   render() {
+    // console.log("App: this.props =>", this.props)
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={LoginContainer} />
+          {/* <PrivateRoute path={`/${this.props.user.username}`} component={UserContainer} /> */}
+          <PrivateRoute exact path={`/:username`} component={UserContainer} />
+          {/* <PrivateRoute exact path="/self" component={UserContainer} /> */}
+          <PrivateRoute exact path="/other" component={UserContainer} />
+          {/* <Redirect from="*" to="/" /> */}
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return { user: state.user }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+      setUser: data => dispatch({ type: 'SET_USER', data }),
+      setUserDestinations: data => dispatch({ type: 'SET_USER_DESTINATIONS', data }),
+      setFollows: data => dispatch({ type: 'SET_FOLLOWS', data })
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
