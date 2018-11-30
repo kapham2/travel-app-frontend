@@ -12,12 +12,16 @@ class LogoutNavigation extends React.Component {
         this.props.history.push("/")
     }
 
+    onClickHome = () => {
+        this.props.history.push(`/${this.props.user.username}`)
+    }
+
     render() {
-        console.log("LogoutNavigation: this.props =>", this.props)
+        // console.log("LogoutNavigation: this.props =>", this.props)
         return (
             <div className="ui borderless menu fixed">
                 <div className="ui text container">
-                    <div className="ui header item">
+                    <div className="ui header link item" onClick={this.onClickHome}>
                         <i className="compass outline icon"></i>
                         <div className="computer only">Travel App</div>
                     </div>
@@ -40,11 +44,11 @@ class LogoutNavigation extends React.Component {
                         </div> */}
                     </div>
 
-                    <div className="ui right circular item">
+                    {/* <div className="ui right circular item">
                         {
                             Object.keys(this.props.user).length > 0 ? (<div className="ui mini circular image"><img src={`/users/dog${this.props.user.id.toString().slice(-1)}.jpg`} alt=""/></div>) : null
                         }
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )

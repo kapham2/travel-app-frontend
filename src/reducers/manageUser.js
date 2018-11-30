@@ -7,7 +7,12 @@ export default function manageUser(state = {
     user_following: [],
     more_users: [],
     user_destinations: [],
-    follows: []
+    follows: [],
+    other_user: {},
+    other_user_visited_destinations: [],
+    other_user_saved_destinations: [],
+    other_user_followers: [],
+    other_user_following: []
 }, action) {
     switch (action.type) {
         case 'SET_USER':
@@ -83,7 +88,15 @@ export default function manageUser(state = {
             return {
                 ...state,
                 user_followers: state.user_followers.filter(user => user.id !== action.user.id),
-                more_users: [...state.more_users, action.user]
+            }
+        case 'SET_OTHER_USER':
+            return {
+                ...state,
+                other_user: action.data.user,
+                other_user_visited_destinations: action.data.visited_destinations,
+                other_user_saved_destinations: action.data.saved_destinations,
+                other_user_followers: action.data.followers,
+                other_user_following: action.data.following,
             }
         default:
             return state

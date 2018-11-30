@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch/*, Redirect*/ } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import './App.css';
 import '../node_modules/semantic-ui-css/semantic.css'
@@ -7,6 +7,7 @@ import '../node_modules/semantic-ui-css/semantic.css'
 import PrivateRoute from './components/PrivateRoute'
 import LoginContainer from './components/LoginContainer'
 import UserContainer from './components/UserContainer'
+import OtherUserContainer from './components/OtherUserContainer'
 class App extends Component { 
 
   componentDidMount() {
@@ -37,11 +38,11 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LoginContainer} />
-          {/* <PrivateRoute path={`/${this.props.user.username}`} component={UserContainer} /> */}
-          <PrivateRoute exact path={`/:username`} component={UserContainer} />
+          <PrivateRoute exact path={`/${this.props.user.username}`} component={UserContainer} />
+          {/* <PrivateRoute exact path={"/:username"} component={UserContainer} /> */}
           {/* <PrivateRoute exact path="/self" component={UserContainer} /> */}
-          <PrivateRoute exact path="/other" component={UserContainer} />
-          {/* <Redirect from="*" to="/" /> */}
+          <PrivateRoute exact path="/:username" component={OtherUserContainer} />
+          <Redirect from="*" to="/" />
         </Switch>
       </BrowserRouter>
     );

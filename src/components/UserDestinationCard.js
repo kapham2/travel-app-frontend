@@ -32,16 +32,16 @@ class UserDestinationCard extends React.Component {
                 clickedButton === "Visited" ? this.postUserDestination(true) : this.postUserDestination(false)
                 break;
             case "Followers":
-                // Click View Page or Unfollow
-                clickedButton === "Block" ? this.deleteFollow("Followers") : this.redirectToUserPage()
+                // Click View Page or Block
+                clickedButton === "Block" ? this.deleteFollow("Followers") : this.getOtherUser()
                 break
             case "Following":
                 // Click View Page or Unfollow
-                clickedButton === "Unfollow" ? this.deleteFollow("Following") : this.redirectToUserPage()
+                clickedButton === "Unfollow" ? this.deleteFollow("Following") : this.getOtherUser()
                 break
             case "Explore Users":
                 // Click View Page Button or Follow Button
-                clickedButton === "Follow" ? this.postFollow() : this.redirectToUserPage()
+                clickedButton === "Follow" ? this.postFollow() : this.getOtherUser()
                 break;
             default:
                 console.log("Oh no!")
@@ -156,8 +156,19 @@ class UserDestinationCard extends React.Component {
         }
     }
 
-    redirectToUserPage = () => {
-        console.log("Currently unavailable")
+    getOtherUser = () => {
+        // console.log("UserDestinationCard: getOtherUser => ")
+
+        fetch(`http://localhost:3333/api/v1/other-users/${this.props.item.id}`, {
+            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
+        })
+        .then(response => response.json())
+        .then(response => {
+            // console.log("fetch response:", response)
+            this.props.setOtherUser(response)
+            this.props.history.push(`/${response.user.username}`)
+        })
+
     }
 
     render() {
@@ -251,6 +262,7 @@ const mapDispatchToProps = (dispatch) => {
         addFollowing: user => dispatch({ type: 'ADD_FOLLOWING', user }),
         deleteFromFollowing: user => dispatch({ type: 'DELETE_FROM_FOLLOWING', user }),
         deleteFromFollowers: user => dispatch({ type: 'DELETE_FROM_FOLLOWERS', user }),
+        setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data })
     }
 }
 
