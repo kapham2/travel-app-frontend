@@ -32,6 +32,7 @@ class UserContainer extends React.Component {
 const mapStateToProps = (state) => {
     return { 
         user: state.user,
+        avatar_url: state.avatar_url,
         user_visited_destinations: state.user_visited_destinations,
         user_saved_destinations: state.user_saved_destinations,
         more_destinations: state.more_destinations,

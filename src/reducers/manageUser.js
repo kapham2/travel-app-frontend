@@ -1,5 +1,6 @@
 export default function manageUser(state = {
     user: {},
+    avatar_url: "",
     user_visited_destinations: [],
     user_saved_destinations: [],
     more_destinations: [],
@@ -16,15 +17,33 @@ export default function manageUser(state = {
 }, action) {
     switch (action.type) {
         case 'SET_USER':
-            return {
-                ...state,
-                user: action.data.user,
-                user_visited_destinations: action.data.visited_destinations,
-                user_saved_destinations: action.data.saved_destinations,
-                more_destinations: action.data.more_destinations,
-                user_followers: action.data.followers,
-                user_following: action.data.following,
-                more_users: action.data.more_users
+            if (action.data.avatar_url) {
+                // console.log("Avatar exists!", action.data.avatar_url)
+                return {
+                    ...state,
+                    user: action.data.user,
+                    avatar_url: action.data.avatar_url,
+                    user_visited_destinations: action.data.visited_destinations,
+                    user_saved_destinations: action.data.saved_destinations,
+                    more_destinations: action.data.more_destinations,
+                    user_followers: action.data.followers,
+                    user_following: action.data.following,
+                    more_users: action.data.more_users
+                }
+            }
+            else {
+                // console.log("Avatar doesn't exist!", action.data.avatar_url)
+                return {
+                    ...state,
+                    user: action.data.user,
+                    avatar_url: "",
+                    user_visited_destinations: action.data.visited_destinations,
+                    user_saved_destinations: action.data.saved_destinations,
+                    more_destinations: action.data.more_destinations,
+                    user_followers: action.data.followers,
+                    user_following: action.data.following,
+                    more_users: action.data.more_users
+                }
             }
         case 'SET_USER_DESTINATIONS':
             return {
