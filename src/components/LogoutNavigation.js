@@ -23,7 +23,7 @@ class LogoutNavigation extends React.Component {
 
     render() {
         // console.log("LogoutNavigation: this.props =>", this.props)
-        const avatar_url = this.props.avatar_url !== "" ? this.props.avatar_url : `/users/dog${this.props.user.id.toString().slice(-1)}.jpg`
+        const avatar_url = this.props.avatar_url !== "" ? this.props.avatar_url : (Object.keys(this.props.user).length !== 0 ? `/users/dog${this.props.user.id.toString().slice(-1)}.jpg` : null)
 
         return (
             <div className="ui borderless menu fixed">
@@ -45,9 +45,9 @@ class LogoutNavigation extends React.Component {
                     </div> */}
                     
                     <div className="ui right dropdown item" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
-                        {
-                            Object.keys(this.props.user).length > 0 ? (<div className="ui mini circular image"><img src={avatar_url} alt=""/></div>) : null
-                        }
+                        <div className="ui mini circular image">
+                            <img src={avatar_url} alt=""/>
+                        </div>
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu" onMouseLeave={this.onMouseLeaveDropDown} >
                             <div className="item" onClick={this.onClickProfile} >Profile</div>
