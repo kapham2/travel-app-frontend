@@ -68,7 +68,7 @@ class OtherUserDestinationCard extends React.Component {
         // console.log("OtherUserDestinationCard: this.props => ", this.props)
 
         let button1
-        let button2
+        // let button2
         let image_url
         let content_header
         let content_meta
@@ -76,14 +76,14 @@ class OtherUserDestinationCard extends React.Component {
         switch (this.props.activeView) {
             case "Visited":
                 button1 = "View Page"
-                button2 = "Save or Visited"
+                // button2 = "Save or Visited"
                 image_url = `/destinations/${this.props.item.city.toLowerCase().replace(/ /g, "")}.jpg`
                 content_header = this.props.item.city
                 content_meta = this.props.item.country
                 break;
             case "Saved":
                 button1 = "View Page"
-                button2 = "Save or Visited"
+                // button2 = "Save or Visited"
                 image_url = `/destinations/${this.props.item.city.toLowerCase().replace(/ /g, "")}.jpg`
                 content_header = this.props.item.city
                 content_meta = this.props.item.country
@@ -97,14 +97,14 @@ class OtherUserDestinationCard extends React.Component {
             //     break;
             case "Followers":
                 button1 = "View Page"
-                button2 = "Follow or Unfollow"
+                // button2 = "Follow or Unfollow"
                 image_url = `/users/dog${this.props.item.id.toString().slice(-1)}.jpg`
                 content_header = this.props.item.username
                 content_meta = ""
                 break
             case "Following":
                 button1 = "View Page"
-                button2 = "Follow or Unfollow"
+                // button2 = "Follow or Unfollow"
                 image_url = `/users/dog${this.props.item.id.toString().slice(-1)}.jpg`
                 content_header = this.props.item.username
                 content_meta = ""
@@ -128,7 +128,7 @@ class OtherUserDestinationCard extends React.Component {
                         <div className="content">
                             <div className="center">
                                 <div className="ui inverted button" id="button1" name={button1} onClick={this.onClickButton} >{button1}</div>
-                                <div className="ui inverted button" id="button2" name={button2} onClick={this.onClickButton} >{button2}</div>
+                                {/* <div className="ui inverted button" id="button2" name={button2} onClick={this.onClickButton} >{button2}</div> */}
                             </div>
                         </div>
                     </div>

@@ -35,10 +35,10 @@ const mapStateToProps = (state) => {
         avatar_url: state.avatar_url,
         user_visited_destinations: state.user_visited_destinations,
         user_saved_destinations: state.user_saved_destinations,
-        more_destinations: state.more_destinations,
+        // more_destinations: state.more_destinations,
         user_followers: state.user_followers,
         user_following: state.user_following,
-        more_users: state.more_users,
+        // more_users: state.more_users,
         user_destinations: state.user_destinations,
         follows: state.follows
     }

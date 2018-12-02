@@ -117,6 +117,31 @@ export default function manageUser(state = {
                 other_user_followers: action.data.followers,
                 other_user_following: action.data.following,
             }
+        case 'ADD_USER_DESTINATION':
+            return {
+                ...state,
+                user_destinations: [...state.user_destinations, action.data.user_destination]
+            }
+        case 'ADD_FOLLOW':
+            return {
+                ...state,
+                follows: [...state.follows, action.data.follow]
+            }
+        case 'DELETE_FROM_USER_DESTINATIONS':
+            return {
+                ...state,
+                user_destinations: state.user_destinations.filter(user_destination => user_destination.id !== action.userDestination.id)
+            }
+        case 'DELETE_FROM_FOLLOWS':
+            return {
+                ...state,
+                follows: state.follows.filter(follow => follow.id !== action.follow.id)
+            }
+        case 'UPDATE_USER_DESTINATIONS':
+            return {
+                ...state,
+                user_destinations: [...(state.user_destinations.filter(user_destination => user_destination.id !== action.userDestination.id)), {...action.userDestination, visited: !action.userDestination.visited } ]
+            }
         default:
             return state
     }

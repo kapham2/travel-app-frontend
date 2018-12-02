@@ -15,18 +15,18 @@ class UserDestinationContainer extends React.Component {
             case "Saved":
                 list = this.props.user_saved_destinations
                 break
-            case "Explore Destinations":
-                list = this.props.more_destinations
-                break
+            // case "Explore Destinations":
+            //     list = this.props.more_destinations
+            //     break
             case "Followers":
                 list = this.props.user_followers
                 break
             case "Following":
                 list = this.props.user_following
                 break
-            case "Explore Users":
-                list = this.props.more_users
-                break
+            // case "Explore Users":
+            //     list = this.props.more_users
+            //     break
             default:
                 console.log("Oh no!")
                 break
