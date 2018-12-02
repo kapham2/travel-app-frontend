@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 class UserCardModalUploadAvatar extends React.Component {
 
@@ -18,8 +19,8 @@ class UserCardModalUploadAvatar extends React.Component {
             body: formData
         })
         .then(response => response.json())
-        .then(response => console.log(response))
-        .then(() => document.querySelector('div[name="modal-upload-avatar"]').classList.remove("active"))
+        .then(response => this.props.setAvatarUrl(response.avatar_url))
+        // .then(() => document.querySelector('div[name="modal-upload-avatar"]').classList.remove("active"))
     }
     
     render() {
@@ -53,4 +54,10 @@ class UserCardModalUploadAvatar extends React.Component {
     }
 }
 
-export default UserCardModalUploadAvatar
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setAvatarUrl : avatar_url => dispatch({ type: 'SET_AVATAR_URL', avatar_url })
+    }
+}
+
+export default connect(null, mapDispatchToProps)(UserCardModalUploadAvatar)

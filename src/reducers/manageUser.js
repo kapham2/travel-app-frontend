@@ -142,6 +142,11 @@ export default function manageUser(state = {
                 ...state,
                 user_destinations: [...(state.user_destinations.filter(user_destination => user_destination.id !== action.userDestination.id)), {...action.userDestination, visited: !action.userDestination.visited } ]
             }
+        case 'SET_AVATAR_URL':
+            return {
+                ...state,
+                avatar_url: action.avatar_url
+            }
         default:
             return state
     }
