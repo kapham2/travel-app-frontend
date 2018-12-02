@@ -1,6 +1,6 @@
 import React from 'react'
 
-class UserCardModal extends React.Component {
+class UserCardModalUploadAvatar extends React.Component {
 
     onClickModalCancelButton = () => {
         document.querySelector('div[name="modal-upload-avatar"]').classList.remove("active")
@@ -53,4 +53,4 @@ class UserCardModal extends React.Component {
     }
 }
 
-export default UserCardModal
+export default UserCardModalUploadAvatar

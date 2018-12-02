@@ -32,6 +32,7 @@ class OtherUserContainer extends React.Component {
 const mapStateToProps = (state) => {
     return { 
         user: state.user,
+        avatar_url: state.avatar_url,
         other_user: state.other_user,
         other_user_visited_destinations: state.other_user_visited_destinations,
         other_user_saved_destinations: state.other_user_saved_destinations,
