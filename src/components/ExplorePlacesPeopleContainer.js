@@ -3,6 +3,18 @@ import ExplorePlacesPeopleCard from './ExplorePlacesPeopleCard'
 
 class ExplorePlacesPeopleContainer extends React.Component {
 
+    getSearchedDestination = (destinations) => {
+        return [...destinations].filter(destination => {
+            return destination.city.toLowerCase().includes(this.props.search) || destination.state.toLowerCase().includes(this.props.search) || destination.country.toLowerCase().includes(this.props.search) || destination.continent.toLowerCase().includes(this.props.search)
+        })
+    }
+
+    getSearchedUser = (users) => {
+        return [...users].filter(user => {
+            return user.username.includes(this.props.search)
+        })
+    }
+
     render() {
         // console.log("ExplorePlacesPeopleContainer: this.props =>", this.props)
 
@@ -16,7 +28,7 @@ class ExplorePlacesPeopleContainer extends React.Component {
             //     list = this.props.user_saved_destinations
             //     break
             case "Places":
-                list = this.props.more_destinations
+                list = this.getSearchedDestination(this.props.more_destinations)
                 break
             // case "Followers":
             //     list = this.props.user_followers
@@ -25,7 +37,7 @@ class ExplorePlacesPeopleContainer extends React.Component {
             //     list = this.props.user_following
             //     break
             case "People":
-                list = this.props.more_users
+                list = this.getSearchedUser(this.props.more_users)
                 break
             default:
                 console.log("Oh no!")

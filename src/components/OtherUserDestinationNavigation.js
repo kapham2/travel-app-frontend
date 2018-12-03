@@ -21,6 +21,7 @@ class OtherUserDestinationNavigation extends React.Component {
                 activeView: event.target.getAttribute('name')
             })
         }
+        this.props.clearSearch()
     }
 
     render() {

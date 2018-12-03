@@ -6,6 +6,26 @@ import UserDestinationNavigation from './UserDestinationNavigation'
 
 class UserContainer extends React.Component {
 
+    constructor() {
+        super()
+        this.state = {
+            search: ""
+        }
+    }
+
+    onChangeSearch = (e) => {
+        // console.log("UserContainer: onChangeSearch =>", e.target.value)
+        this.setState({
+            search: e.target.value
+        })
+    }
+
+    clearSearch = () => {
+        this.setState({
+            search: ""
+        })
+    }
+
     render() {
         // console.log("UserContainer: this.props =>", this.props)
         return (
@@ -13,7 +33,7 @@ class UserContainer extends React.Component {
                 <div className="row"></div>
 
                 <div className="ui row">
-                    <LogoutNavigation {...this.props} />
+                    <LogoutNavigation {...this.props} search={this.state.search} onChangeSearch={this.onChangeSearch} />
                 </div>
 
                 <div className="row">
@@ -21,7 +41,7 @@ class UserContainer extends React.Component {
                 </div>
                 
                 <div className="row">
-                    <UserDestinationNavigation {...this.props} />
+                    <UserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
                 </div>
 
             </div>

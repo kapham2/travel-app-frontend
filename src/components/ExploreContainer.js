@@ -8,12 +8,21 @@ class ExploreContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            activeView: ""
+            search: ""
         }
     }
 
-    updateActiveView = (activeView) => {
-        this.setState({ activeView: activeView})
+    onChangeSearch = (e) => {
+        // console.log("ExploreContainer: onChangeSearch =>", e.target.value)
+        this.setState({
+            search: e.target.value
+        })
+    }
+
+    clearSearch = () => {
+        this.setState({
+            search: ""
+        })
     }
 
     render() {
@@ -23,7 +32,7 @@ class ExploreContainer extends React.Component {
                 <div className="row"></div>
 
                 <div className="ui row">
-                    <LogoutNavigation {...this.props} updateActiveView={this.updateActiveView} />
+                    <LogoutNavigation {...this.props} search={this.state.search} onChangeSearch={this.onChangeSearch} />
                 </div>
 
                 <div className="row">
@@ -54,7 +63,7 @@ class ExploreContainer extends React.Component {
                 </div>
                 
                 <div className="row">
-                    <ExploreNavigation {...this.props} />
+                    <ExploreNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
                 </div>
 
             </div>

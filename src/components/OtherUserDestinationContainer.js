@@ -3,6 +3,18 @@ import OtherUserDestinationCard from './OtherUserDestinationCard'
 
 class OtherUserDestinationContainer extends React.Component {
 
+    getSearchedDestination = (destinations) => {
+        return [...destinations].filter(destination => {
+            return destination.city.toLowerCase().includes(this.props.search) || destination.state.toLowerCase().includes(this.props.search) || destination.country.toLowerCase().includes(this.props.search) || destination.continent.toLowerCase().includes(this.props.search)
+        })
+    }
+
+    getSearchedUser = (users) => {
+        return [...users].filter(user => {
+            return user.username.includes(this.props.search)
+        })
+    }
+
     render() {
         // console.log("OtherUserDestinationContainer: this.props =>", this.props)
 
@@ -10,19 +22,19 @@ class OtherUserDestinationContainer extends React.Component {
         
         switch (this.props.activeView) {
             case "Visited":
-                list = this.props.other_user_visited_destinations
+                list = this.getSearchedDestination(this.props.other_user_visited_destinations)
                 break
             case "Saved":
-                list = this.props.other_user_saved_destinations
+                list = this.getSearchedDestination(this.props.other_user_saved_destinations)
                 break
             // case "Explore Destinations":
             //     list = this.props.more_destinations
             //     break
             case "Followers":
-                list = this.props.other_user_followers
+                list = this.getSearchedUser(this.props.other_user_followers)
                 break
             case "Following":
-                list = this.props.other_user_following
+                list = this.getSearchedUser(this.props.other_user_following)
                 break
             // case "Explore Users":
             //     list = this.props.more_users

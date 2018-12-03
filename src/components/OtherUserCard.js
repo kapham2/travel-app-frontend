@@ -10,7 +10,7 @@ class OtherUserCard extends React.Component {
                     <div className="item">
 
                         <div className="ui tiny circular image">
-                            <img src={`/users/dog${this.props.other_user.id}.jpg`} alt="" />
+                            <img src={(Object.keys(this.props.other_user).length !== 0 ? `/users/dog${this.props.other_user.id.toString().slice(-1)}.jpg` : null)} alt="" />
                         </div>
 
                         <div className="content">

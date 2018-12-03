@@ -6,6 +6,26 @@ import OtherUserDestinationNavigation from './OtherUserDestinationNavigation'
 
 class OtherUserContainer extends React.Component {
 
+    constructor() {
+        super()
+        this.state = {
+            search: ""
+        }
+    }
+
+    onChangeSearch = (e) => {
+        // console.log("OtherUserContainer: onChangeSearch =>", e.target.value)
+        this.setState({
+            search: e.target.value
+        })
+    }
+
+    clearSearch = () => {
+        this.setState({
+            search: ""
+        })
+    }
+
     componentDidMount() {
         fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
@@ -35,7 +55,7 @@ class OtherUserContainer extends React.Component {
                 <div className="row"></div>
 
                 <div className="ui row">
-                    <LogoutNavigation {...this.props} />
+                    <LogoutNavigation {...this.props} search={this.state.search} onChangeSearch={this.onChangeSearch} />
                 </div>
 
                 <div className="row">
@@ -43,7 +63,7 @@ class OtherUserContainer extends React.Component {
                 </div>
                 
                 <div className="row">
-                    <OtherUserDestinationNavigation {...this.props} />
+                    <OtherUserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
                 </div>
 
             </div>

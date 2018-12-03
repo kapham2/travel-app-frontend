@@ -1,4 +1,5 @@
 import React from 'react'
+// import _ from 'lodash'
 
 class LogoutNavigation extends React.Component {
 
@@ -49,7 +50,7 @@ class LogoutNavigation extends React.Component {
 
                     <div className="item">
                         <div className="ui icon input">
-                            <input type="text" placeholder="Search..." />
+                            <input type="text" placeholder="Search..." value={this.props.search} onChange={/*_.debounce(this.props.onChangeSearch, 500)*/this.props.onChangeSearch} />
                             <i className="search icon"></i>
                         </div>
                     </div>
