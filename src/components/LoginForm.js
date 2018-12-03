@@ -119,9 +119,9 @@ class LoginForm extends React.Component {
         // console.log("LoginForm: this.props =>", this.props)
         return (
             <div className="ui very padded raised segment">
-                <h2 className="ui center aligned grey icon header">
-                    <i className="compass outline icon"></i>
-                    Travel App
+                <h2 className="ui center aligned icon header">
+                    <i className="globe icon"></i>
+                    HelloWorld
                 </h2>
                 <br/>
                 <div className="ui hidden error message" id="error-message">

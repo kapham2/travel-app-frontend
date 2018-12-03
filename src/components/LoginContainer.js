@@ -10,7 +10,7 @@ class LoginContainer extends React.Component {
             <div className="ui very padded centered grid">
                 <div className="stretched row">
                     <div className="column login-column computer only">
-                        <img className="ui rounded image" src="home.jpg" alt="" />
+                        <img className="ui rounded image" src="/helloworld.jpg" alt="" />
                     </div>
                     <div className="column login-column">
                         {/* <LoginForm {...this.props} setUser={this.props.setUser} /> */}
