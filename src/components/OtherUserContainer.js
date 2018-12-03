@@ -6,6 +6,28 @@ import OtherUserDestinationNavigation from './OtherUserDestinationNavigation'
 
 class OtherUserContainer extends React.Component {
 
+    componentDidMount() {
+        fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
+            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json()
+            }
+            else {
+                throw response
+            }
+        })
+        .then(response => {
+            console.log("fetch response:", response)
+            this.props.setOtherUser(response)
+        })
+        .catch(response => response.json().then(response => {
+            console.log("fetch error:", response.error)
+            this.props.history.push("/404")
+        }))
+    }
+
     render() {
         // console.log("OtherUserContainer: this.props =>", this.props)
         return (
@@ -41,5 +63,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(OtherUserContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(OtherUserContainer)
 

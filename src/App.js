@@ -8,6 +8,7 @@ import PrivateRoute from './components/PrivateRoute'
 import LoginContainer from './components/LoginContainer'
 import UserContainer from './components/UserContainer'
 import ExploreContainer from './components/ExploreContainer'
+import NotFoundContainer from './components/NotFoundContainer'
 import OtherUserContainer from './components/OtherUserContainer'
 class App extends Component { 
 
@@ -43,6 +44,7 @@ class App extends Component {
           <PrivateRoute exact path={`/${this.props.user.username}/explore`} component={ExploreContainer} />
           {/* <PrivateRoute exact path={"/:username"} component={UserContainer} /> */}
           {/* <PrivateRoute exact path="/self" component={UserContainer} /> */}
+          <PrivateRoute exact path="/404" component={NotFoundContainer} />
           <PrivateRoute exact path="/:username" component={OtherUserContainer} />
           <Redirect from="*" to="/" />
         </Switch>
