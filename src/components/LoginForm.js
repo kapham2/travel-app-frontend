@@ -135,7 +135,7 @@ class LoginForm extends React.Component {
                     <div className="field">
                         <input type="password" name="password" placeholder="password" />
                     </div>
-                    <button className="fluid ui button" type="submit">{ this.state.loginForm ? 'Login' : 'Sign up' }</button>
+                    <button className="fluid ui black button" type="submit">{ this.state.loginForm ? 'Login' : 'Sign up' }</button>
                 </form>
                 <br/>
                 { 
