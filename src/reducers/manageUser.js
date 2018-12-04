@@ -10,6 +10,7 @@ export default function manageUser(state = {
     user_destinations: [],
     follows: [],
     other_user: {},
+    other_avatar_url: "",
     other_user_visited_destinations: [],
     other_user_saved_destinations: [],
     other_user_followers: [],
@@ -17,33 +18,16 @@ export default function manageUser(state = {
 }, action) {
     switch (action.type) {
         case 'SET_USER':
-            if (action.data.avatar_url) {
-                // console.log("Avatar exists!", action.data.avatar_url)
-                return {
-                    ...state,
-                    user: action.data.user,
-                    avatar_url: action.data.avatar_url,
-                    user_visited_destinations: action.data.visited_destinations,
-                    user_saved_destinations: action.data.saved_destinations,
-                    more_destinations: action.data.more_destinations,
-                    user_followers: action.data.followers,
-                    user_following: action.data.following,
-                    more_users: action.data.more_users
-                }
-            }
-            else {
-                // console.log("Avatar doesn't exist!", action.data.avatar_url)
-                return {
-                    ...state,
-                    user: action.data.user,
-                    avatar_url: "",
-                    user_visited_destinations: action.data.visited_destinations,
-                    user_saved_destinations: action.data.saved_destinations,
-                    more_destinations: action.data.more_destinations,
-                    user_followers: action.data.followers,
-                    user_following: action.data.following,
-                    more_users: action.data.more_users
-                }
+            return {
+                ...state,
+                user: action.data.user,
+                avatar_url: action.data.avatar_url,
+                user_visited_destinations: action.data.visited_destinations,
+                user_saved_destinations: action.data.saved_destinations,
+                more_destinations: action.data.more_destinations,
+                user_followers: action.data.followers,
+                user_following: action.data.following,
+                more_users: action.data.more_users
             }
         case 'SET_USER_DESTINATIONS':
             return {
@@ -112,6 +96,7 @@ export default function manageUser(state = {
             return {
                 ...state,
                 other_user: action.data.user,
+                other_avatar_url: action.data.avatar_url,
                 other_user_visited_destinations: action.data.visited_destinations,
                 other_user_saved_destinations: action.data.saved_destinations,
                 other_user_followers: action.data.followers,

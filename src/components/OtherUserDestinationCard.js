@@ -98,14 +98,14 @@ class OtherUserDestinationCard extends React.Component {
             case "Followers":
                 button1 = "View Page"
                 // button2 = "Follow or Unfollow"
-                image_url = `/users/dog${this.props.item.id.toString().slice(-1)}.jpg`
+                image_url = this.props.item.avatar_url
                 content_header = this.props.item.username
                 content_meta = ""
                 break
             case "Following":
                 button1 = "View Page"
                 // button2 = "Follow or Unfollow"
-                image_url = `/users/dog${this.props.item.id.toString().slice(-1)}.jpg`
+                image_url = this.props.item.avatar_url
                 content_header = this.props.item.username
                 content_meta = ""
                 break

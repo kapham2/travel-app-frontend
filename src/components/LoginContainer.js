@@ -8,6 +8,9 @@ class LoginContainer extends React.Component {
         // console.log("LoginContainer: this.props =>", this.props)
         return (
             <div className="ui very padded centered grid">
+                <div className="row"></div>
+                <div className="row"></div>
+
                 <div className="stretched row">
                     <div className="column login-column computer only">
                         <img className="ui rounded image" src="/helloworld.jpg" alt="" />

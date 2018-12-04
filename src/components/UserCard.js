@@ -17,7 +17,6 @@ class UserCard extends React.Component {
 
     render() {
         // console.log("UserCard: this.props => ", this.props)
-        const avatar_url = this.props.avatar_url !== "" ? this.props.avatar_url : `/users/dog${this.props.user.id.toString().slice(-1)}.jpg`
 
         return (
             <div className="ui text container">
@@ -28,7 +27,7 @@ class UserCard extends React.Component {
                             <div className="ui dimmer" onMouseLeave={this.onMouseLeaveAvatar} >
                                 <div className="ui inverted button" onClick={this.onClickUpdateButton} >Update</div>
                             </div>
-                            <img src={avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
+                            <img src={this.props.avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
                         </div>
 
                         <div className="content">
