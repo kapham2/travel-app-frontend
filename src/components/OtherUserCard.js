@@ -9,7 +9,7 @@ class OtherUserCard extends React.Component {
                 <div className="ui very relaxed unstackable items">
                     <div className="item">
 
-                        <div className="ui tiny circular image">
+                        <div className="ui small circular image">
                             <img src={(Object.keys(this.props.other_user).length !== 0 ? `/users/dog${this.props.other_user.id.toString().slice(-1)}.jpg` : null)} alt="" />
                         </div>
 

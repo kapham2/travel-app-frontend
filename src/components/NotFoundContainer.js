@@ -21,7 +21,7 @@ class NotFoundContainer extends React.Component {
                         <div className="ui very relaxed unstackable items">
                             <div className="item">
 
-                                <div className="ui tiny circular blurring dimmable image">
+                                <div className="ui small circular blurring dimmable image">
                                     <img src="/cake.jpg" alt="" />
                                 </div>
 

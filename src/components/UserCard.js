@@ -24,7 +24,7 @@ class UserCard extends React.Component {
                 <div className="ui very relaxed unstackable items">
                     <div className="item">
 
-                        <div className="ui tiny circular blurring dimmable image">
+                        <div className="ui small circular blurring dimmable image">
                             <div className="ui dimmer" onMouseLeave={this.onMouseLeaveAvatar} >
                                 <div className="ui inverted button" onClick={this.onClickUpdateButton} >Update</div>
                             </div>

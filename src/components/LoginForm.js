@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends React.Component {
 
@@ -119,7 +120,7 @@ class LoginForm extends React.Component {
         // console.log("LoginForm: this.props =>", this.props)
         return (
             <div className="ui very padded raised segment">
-                <h2 className="ui center aligned icon header">
+                <h2 className="ui middle aligned icon header">
                     <i className="globe icon"></i>
                     HelloWorld
                 </h2>
@@ -136,10 +137,12 @@ class LoginForm extends React.Component {
                     </div>
                     <button className="fluid ui button" type="submit">{ this.state.loginForm ? 'Login' : 'Sign up' }</button>
                 </form>
-                <div className="ui horizontal divider">
-                    or
-                </div>
-                <button className="fluid ui button" onClick={this.onClickChangeFormType} >{ this.state.loginForm ? 'Sign up' : 'Login' }</button>
+                <br/>
+                { 
+                    this.state.loginForm 
+                    ? (<div className="ui center aligned container">Don't have an account? <Link to="/" onClick={this.onClickChangeFormType}>Sign up</Link></div>) 
+                    : (<div className="ui center aligned container">Already have an account? <Link to="/" onClick={this.onClickChangeFormType}>Login</Link></div>)
+                }
             </div>
         )
     }
