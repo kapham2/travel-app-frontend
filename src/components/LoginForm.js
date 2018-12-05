@@ -121,7 +121,7 @@ class LoginForm extends React.Component {
         return (
             <div className="ui very padded raised segment">
                 <h2 className="ui middle aligned icon header">
-                    <i className="globe icon"></i>
+                    <i className="plane icon"></i>
                     HelloWorld
                 </h2>
                 <br/>

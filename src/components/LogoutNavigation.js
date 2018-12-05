@@ -43,7 +43,7 @@ class LogoutNavigation extends React.Component {
             <div className="ui borderless menu fixed">
                 <div className="ui text container">
                     <div className="ui header link item" onClick={this.onClickProfile}>
-                        <i className="globe icon"></i>
+                        <i className="plane icon"></i>
                         <div className="computer only">HelloWorld</div>
                     </div>
 
