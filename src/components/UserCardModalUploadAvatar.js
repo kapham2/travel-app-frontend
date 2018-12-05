@@ -28,8 +28,6 @@ class UserCardModalUploadAvatar extends React.Component {
     render() {
         // console.log("UserCardModalUploadAvatar: this.props => ", this.props)
 
-        const avatar_url = this.props.avatar_url !== "" ? this.props.avatar_url : `/users/dog${this.props.user.id.toString().slice(-1)}.jpg`
-
         return (
             <div className="ui small modal" name="modal-upload-avatar">
                 <i className="close icon"></i>
@@ -38,7 +36,7 @@ class UserCardModalUploadAvatar extends React.Component {
                 </div>
                 <div className="image content">
                     <div className="ui small circular image">
-                            <img src={avatar_url} alt="" />
+                            <img src={this.props.avatar_url} alt="" />
                     </div>
 
                     <div className="description" name="modal-description" >
