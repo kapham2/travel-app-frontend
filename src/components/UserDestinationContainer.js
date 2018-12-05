@@ -26,7 +26,7 @@ class UserDestinationContainer extends React.Component {
             case "Visited":
                 list = this.getSearchedDestination(this.props.user_visited_destinations)
                 if (this.props.user_visited_destinations.length === 0) {
-                    empty = <div>You don't have any visited places yet. Click <Link to={`/${this.props.user.username}/explore`} >Explore</Link> to add places to your visited list!</div>
+                    empty = <div>You don't have any visited places yet. Click <Link to={`/explore`} >Explore</Link> to add places to your visited list!</div>
                 }
                 else if (list.length === 0) {
                     empty = <div>No visited places match your search. :(</div>
@@ -38,7 +38,7 @@ class UserDestinationContainer extends React.Component {
             case "Saved":
                 list = this.getSearchedDestination(this.props.user_saved_destinations)
                 if (this.props.user_saved_destinations.length === 0) {
-                    empty = <div>You don't have any saved places yet. Click <Link to={`/${this.props.user.username}/explore`} >Explore</Link> to add places to your saved list!</div>
+                    empty = <div>You don't have any saved places yet. Click <Link to={`/explore`} >Explore</Link> to add places to your saved list!</div>
                 }
                 else if (list.length === 0) {
                     empty = <div>No saved places match your search. :(</div>
@@ -66,7 +66,7 @@ class UserDestinationContainer extends React.Component {
             case "Following":
                 list = this.getSearchedUser(this.props.user_following)
                 if (this.props.user_following.length === 0) {
-                    empty = <div>You haven't followed anyone yet. Click <Link to={`/${this.props.user.username}/explore`} >Explore</Link> to start following people!</div>
+                    empty = <div>You haven't followed anyone yet. Click <Link to={`/explore`} >Explore</Link> to start following people!</div>
                 }
                 else if (list.length === 0) {
                     empty = <div>No one matches your search. :(</div>

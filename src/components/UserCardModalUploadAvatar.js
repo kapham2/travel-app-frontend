@@ -10,17 +10,19 @@ class UserCardModalUploadAvatar extends React.Component {
     onClickModalOkButton = () => {
         document.querySelector('div[name="modal-upload-avatar"]').classList.remove("active")
         const files = document.querySelector('input[name="modal-uploaded-file"]').files
-        const formData = new FormData()
-        formData.append('user[avatar]', files[0])
 
-        fetch(`http://localhost:3333/api/v1/users/${this.props.user.id}`, {
-            method: 'PATCH',
-            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(response => this.props.setAvatarUrl(response.avatar_url))
-        // .then(() => document.querySelector('div[name="modal-upload-avatar"]').classList.remove("active"))
+        if (files.length !== 0) {
+            const formData = new FormData()
+            formData.append('user[avatar]', files[0])
+    
+            fetch(`http://localhost:3333/api/v1/users/${this.props.user.id}`, {
+                method: 'PATCH',
+                headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+                body: formData
+            })
+            .then(response => response.json())
+            .then(response => this.props.setAvatarUrl(response.avatar_url))
+        }
     }
     
     render() {

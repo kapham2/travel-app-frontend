@@ -33,7 +33,7 @@ class LogoutNavigation extends React.Component {
     // }
 
     onClickExplore = () => {
-        this.props.history.push(`/${this.props.user.username}/explore`)
+        this.props.history.push(`/explore`)
     }
 
     render() {

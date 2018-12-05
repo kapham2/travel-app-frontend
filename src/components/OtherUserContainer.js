@@ -27,6 +27,10 @@ class OtherUserContainer extends React.Component {
     }
 
     componentDidMount() {
+        if (this.props.match.url.slice(1) === "explore") {
+            this.props.history.push("/explore")
+        }
+
         fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
         })

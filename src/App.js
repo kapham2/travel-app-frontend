@@ -41,7 +41,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginContainer} />
           <PrivateRoute exact path={`/${this.props.user.username}`} component={UserContainer} />
-          <PrivateRoute exact path={`/${this.props.user.username}/explore`} component={ExploreContainer} />
+          <PrivateRoute exact path={`/explore`} component={ExploreContainer} />
           {/* <PrivateRoute exact path={"/:username"} component={UserContainer} /> */}
           {/* <PrivateRoute exact path="/self" component={UserContainer} /> */}
           <PrivateRoute exact path="/404" component={NotFoundContainer} />
