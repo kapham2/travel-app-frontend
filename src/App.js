@@ -10,6 +10,7 @@ import UserContainer from './components/UserContainer'
 import ExploreContainer from './components/ExploreContainer'
 import NotFoundContainer from './components/NotFoundContainer'
 import OtherUserContainer from './components/OtherUserContainer'
+import DestinationContainer from './components/DestinationContainer'
 class App extends Component { 
 
   componentDidMount() {
@@ -42,8 +43,7 @@ class App extends Component {
           <Route exact path="/" component={LoginContainer} />
           <PrivateRoute exact path={`/${this.props.user.username}`} component={UserContainer} />
           <PrivateRoute exact path={`/explore`} component={ExploreContainer} />
-          {/* <PrivateRoute exact path={"/:username"} component={UserContainer} /> */}
-          {/* <PrivateRoute exact path="/self" component={UserContainer} /> */}
+          <PrivateRoute exact path="/places/:city" component={DestinationContainer} />
           <PrivateRoute exact path="/404" component={NotFoundContainer} />
           <PrivateRoute exact path="/:username" component={OtherUserContainer} />
           <Redirect from="*" to="/" />

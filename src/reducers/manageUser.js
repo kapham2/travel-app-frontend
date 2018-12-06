@@ -14,9 +14,21 @@ export default function manageUser(state = {
     other_user_visited_destinations: [],
     other_user_saved_destinations: [],
     other_user_followers: [],
-    other_user_following: []
+    other_user_following: [],
+    destination: {},
+    photo_url: "",
+    users_visited: [],
+    users_saved: []
 }, action) {
     switch (action.type) {
+        case 'SET_DESTINATION':
+            return {
+                ...state,
+                destination: action.data.destination,
+                photo_url: action.data.photo_url,
+                users_visited: action.data.users_visited,
+                users_saved: action.data.users_saved
+            }
         case 'SET_USER':
             return {
                 ...state,

@@ -19,24 +19,24 @@ class OtherUserDestinationCard extends React.Component {
         // console.log("OtherUserDestinationCard: clicked", event.target.getAttribute("name"))
         const clickedButton = event.target.getAttribute("name")
         switch (this.props.activeView) {
-            // case "Visited":
-            //     // Click Save or Delete Button
-            //     clickedButton === "Save" ? this.patchUserDestination(false) : this.deleteUserDestination("Visited")
-            //     break;
-            // case "Saved":
-            //     // Click Visited or Delete Button
-            //     clickedButton === "Visited" ? this.patchUserDestination(true) : this.deleteUserDestination("Saved")
-            //     break;
+            case "Visited":
+                // Click View Page Button
+                clickedButton === "View Page" ? this.getDestination() : console.log("Oh no!")
+                break;
+            case "Saved":
+                // Click View Page Button
+                clickedButton === "View Page" ? this.getDestination() : console.log("Oh no!")
+                break;
             // case "Explore Destinations":
             //     // Click Visited Button or Saved Button
             //     clickedButton === "Visited" ? this.postUserDestination(true) : this.postUserDestination(false)
             //     break;
             case "Followers":
-                // Click View Page or Block
+                // Click View Page Button
                 clickedButton === "View Page" ? this.getOtherUser() : console.log("Oh no!")
                 break
             case "Following":
-                // Click View Page or Unfollow
+                // Click View Page Button
                 clickedButton === "View Page" ? this.getOtherUser() : console.log("Oh no!")
                 break
             // case "Explore Users":
@@ -62,6 +62,20 @@ class OtherUserDestinationCard extends React.Component {
             this.props.history.push(`/${response.user.username}`)
         })
 
+    }
+
+    getDestination = () => {
+        // console.log("OtherUserDestinationCard: getDestination => ")
+
+        fetch(`http://localhost:3333/api/v1/destinations/${this.props.item.id}`, {
+            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
+        })
+        .then(response => response.json())
+        .then(response => {
+            // console.log("fetch response:", response)
+            this.props.setDestination(response)
+            this.props.history.push(`/places/${response.destination.city.toLowerCase().replace(/\s+/g, '-')}`)
+        })
     }
 
     render() {
@@ -155,7 +169,8 @@ const mapDispatchToProps = (dispatch) => {
 //         addFollowing: user => dispatch({ type: 'ADD_FOLLOWING', user }),
 //         deleteFromFollowing: user => dispatch({ type: 'DELETE_FROM_FOLLOWING', user }),
 //         deleteFromFollowers: user => dispatch({ type: 'DELETE_FROM_FOLLOWERS', user }),
-        setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data })
+        setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
+        setDestination: data => dispatch({ type: 'SET_DESTINATION', data})
     }
 }
 
