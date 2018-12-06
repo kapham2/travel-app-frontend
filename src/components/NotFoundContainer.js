@@ -43,6 +43,10 @@ class NotFoundContainer extends React.Component {
                     </div>
                 </div>
 
+                <div className="row">
+                    <img className="ui rounded bordered centered image" src="/cake.gif" alt="" />
+                </div>
+
             </div>
         )
     }
