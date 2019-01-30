@@ -28,18 +28,18 @@ class DestinationPeopleContainer extends React.Component {
                     empty = <div></div>
                 }
                 break
-            case "People Who Saved":
-                list = this.getSearchedUser(this.props.users_saved)
-                if (this.props.users_saved.length === 0) {
-                    empty = <div>No one has added {this.props.destination.city}, {this.props.destination.country} to their saved list.</div>
-                }
-                else if (list.length === 0) {
-                    empty = <div>No one matchs your search. :(</div>
-                }
-                else {
-                    empty = <div></div>
-                }
-                break
+            // case "People Who Saved":
+            //     list = this.getSearchedUser(this.props.users_saved)
+            //     if (this.props.users_saved.length === 0) {
+            //         empty = <div>No one has added {this.props.destination.city}, {this.props.destination.country} to their saved list.</div>
+            //     }
+            //     else if (list.length === 0) {
+            //         empty = <div>No one matchs your search. :(</div>
+            //     }
+            //     else {
+            //         empty = <div></div>
+            //     }
+            //     break
             default:
                 console.log("Oh no!")
                 break

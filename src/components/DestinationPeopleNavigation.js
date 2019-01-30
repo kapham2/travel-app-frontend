@@ -31,7 +31,7 @@ class DestinationPeopleNavigation extends React.Component {
                 <div className="ui text container">
                     <div className="ui stackable secondary menu">
                             <div className="link item active" data-tab="People Who Visited" name="People Who Visited" onClick={this.onClickMenu} >People Who Visited</div>
-                            <div className="link item" data-tab="People Who Saved" name="People Who Saved" onClick={this.onClickMenu} >People Who Saved</div>
+                            {/* <div className="link item" data-tab="People Who Saved" name="People Who Saved" onClick={this.onClickMenu} >People Who Saved</div> */}
                     </div>
                 </div>
                 
