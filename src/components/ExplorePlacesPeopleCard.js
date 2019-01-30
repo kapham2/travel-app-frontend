@@ -29,7 +29,7 @@ class ExplorePlacesPeopleCard extends React.Component {
             //     break;
             case "Places":
                 // Click Visited Button or Saved Button
-                clickedButton === "Visited" ? this.postUserDestination(true) : this.postUserDestination(false)
+                clickedButton === "Visited" ? this.postUserDestination(true) : this.getDestination()
                 break;
             // case "Followers":
             //     // Click View Page or Block
@@ -175,6 +175,20 @@ class ExplorePlacesPeopleCard extends React.Component {
 
     }
 
+    getDestination = () => {
+        // console.log("UserDestinationCard: getDestination => ")
+
+        fetch(`http://localhost:3333/api/v1/destinations/${this.props.item.id}`, {
+            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
+        })
+        .then(response => response.json())
+        .then(response => {
+            // console.log("fetch response:", response)
+            this.props.setDestination(response)
+            this.props.history.push(`/places/${response.destination.city.toLowerCase().replace(/\s+/g, '-')}`)
+        })
+    }
+
     render() {
         // console.log("ExplorePlacesPeopleCard: this.props => ", this.props)
 
@@ -200,8 +214,8 @@ class ExplorePlacesPeopleCard extends React.Component {
             //     content_meta = this.props.item.country
             //     break;
             case "Places":
-                button1 = "Visited"
-                button2 = "Save"
+                button1 = "View Page"
+                button2 = "Visited"
                 image_url = `/destinations/${this.props.item.city.toLowerCase().replace(/ /g, "")}.jpg`
                 content_header = this.props.item.city
                 content_meta = this.props.item.country
@@ -268,7 +282,8 @@ const mapDispatchToProps = (dispatch) => {
         // deleteFromFollowers: user => dispatch({ type: 'DELETE_FROM_FOLLOWERS', user }),
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
         addUserDestination: data => dispatch({ type: 'ADD_USER_DESTINATION', data }),
-        addFollow: data => dispatch({ type: 'ADD_FOLLOW', data })
+        addFollow: data => dispatch({ type: 'ADD_FOLLOW', data }),
+        setDestination: data => dispatch({ type: 'SET_DESTINATION', data})
     }
 }
 
