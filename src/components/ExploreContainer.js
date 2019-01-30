@@ -2,14 +2,26 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import ExploreNavigation from './ExploreNavigation'
+import ExplorePlacesPeopleContainer from './ExplorePlacesPeopleContainer'
 
 class ExploreContainer extends React.Component {
 
     constructor() {
         super()
         this.state = {
-            search: ""
+            search: "",
+            activeView: "Places"
         }
+    }
+
+    setActiveView = (newView) => {
+        // console.log("ExploreContainer: => setActiveView", newView)
+        this.setState({ activeView: newView })
+    }
+
+    onClickMenu = (event) => {
+        // console.log("Explore Container: clicked", event.target.getAttribute('name'))
+        this.setActiveView(event.target.getAttribute('name'))
     }
 
     onChangeSearch = (e) => {
@@ -40,21 +52,21 @@ class ExploreContainer extends React.Component {
                         <div className="ui very relaxed unstackable items">
                             <div className="item">
 
-                                {/* <div className="ui tiny circular blurring dimmable image">
-                                    <img src="" alt="" />
-                                </div> */}
+                                <div className="ui small circular image">
+                                    <img src="/helloworldsquare.jpg" alt="" />
+                                </div>
 
                                 <div className="content">
                                     <p className="header">Explore</p>
-                                    {/* <div className="meta">
-                                        <span></span>
+                                    <div className="meta">
+                                        <span name="Places" onClick={this.onClickMenu}>Cities</span> | <span name="People" onClick={this.onClickMenu}>People</span>
                                     </div>
                                     <div className="description">
                                         <p></p>
                                     </div>
                                     <div className="extra">
                                         <p></p>
-                                    </div> */}
+                                    </div>
                                 </div>
 
                             </div>
@@ -63,7 +75,8 @@ class ExploreContainer extends React.Component {
                 </div>
                 
                 <div className="row">
-                    <ExploreNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
+                    {/* <ExploreNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} /> */}
+                    <ExplorePlacesPeopleContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
                 </div>
 
             </div>
