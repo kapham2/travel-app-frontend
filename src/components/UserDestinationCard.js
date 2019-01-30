@@ -21,7 +21,7 @@ class UserDestinationCard extends React.Component {
         switch (this.props.activeView) {
             case "Visited":
                 // Click Save or Delete Button
-                clickedButton === "Save" ? this.patchUserDestination(false) : this.deleteUserDestination("Visited")
+                clickedButton === "View Page" ? this.getDestination() : this.deleteUserDestination("Visited")
                 break;
             case "Saved":
                 // Click Visited or Delete Button
@@ -177,6 +177,20 @@ class UserDestinationCard extends React.Component {
 
     }
 
+    getDestination = () => {
+        // console.log("UserDestinationCard: getDestination => ")
+
+        fetch(`http://localhost:3333/api/v1/destinations/${this.props.item.id}`, {
+            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
+        })
+        .then(response => response.json())
+        .then(response => {
+            // console.log("fetch response:", response)
+            this.props.setDestination(response)
+            this.props.history.push(`/places/${response.destination.city.toLowerCase().replace(/\s+/g, '-')}`)
+        })
+    }
+
     render() {
         // console.log("UserDestinationCard: this.props => ", this.props)
 
@@ -188,8 +202,8 @@ class UserDestinationCard extends React.Component {
 
         switch (this.props.activeView) {
             case "Visited":
-                button1 = "Save"
-                button2 = "Delete"
+                button1 = "View Page"
+                button2 = "Remove"
                 image_url = `/destinations/${this.props.item.city.toLowerCase().replace(/ /g, "")}.jpg`
                 content_header = this.props.item.city
                 content_meta = this.props.item.country
@@ -271,7 +285,8 @@ const mapDispatchToProps = (dispatch) => {
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
         deleteFromUserDestinations: userDestination => dispatch({ type: 'DELETE_FROM_USER_DESTINATIONS', userDestination }),
         deleteFromFollows: follow => dispatch({ type: 'DELETE_FROM_FOLLOWS', follow }),
-        updateUserDestinations : userDestination => dispatch({ type: 'UPDATE_USER_DESTINATIONS', userDestination })
+        updateUserDestinations : userDestination => dispatch({ type: 'UPDATE_USER_DESTINATIONS', userDestination }),
+        setDestination: data => dispatch({ type: 'SET_DESTINATION', data})
     }
 }
 
