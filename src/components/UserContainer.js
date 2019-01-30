@@ -3,14 +3,21 @@ import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import UserCard from './UserCard'
 import UserDestinationNavigation from './UserDestinationNavigation'
+import UserDestinationContainer from './UserDestinationContainer'
 
 class UserContainer extends React.Component {
 
     constructor() {
         super()
         this.state = {
-            search: ""
+            search: "",
+            activeView: "Visited"
         }
+    }
+
+    setActiveView = (newView) => {
+        // console.log("UserContainer: => setActiveView", newView)
+        this.setState({ activeView: newView })
     }
 
     onChangeSearch = (e) => {
@@ -37,11 +44,12 @@ class UserContainer extends React.Component {
                 </div>
 
                 <div className="row">
-                    <UserCard {...this.props} />
+                    <UserCard {...this.props} setActiveView={this.setActiveView} />
                 </div>
                 
                 <div className="row">
-                    <UserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
+                    {/* <UserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} /> */}
+                    <UserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
                 </div>
 
             </div>
