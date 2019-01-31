@@ -38,7 +38,7 @@ class UserCard extends React.Component {
                         <div className="content">
                             <p className="header">{this.props.user.username}</p>
                             <div className="meta">
-                                <span name="Visited" onClick={this.onClickMenu}>{this.props.user_visited_destinations.length} cities</span> | <span name="Followers" onClick={this.onClickMenu}>{this.props.user_followers.length} followers</span> | <span name="Following" onClick={this.onClickMenu}>{this.props.user_following.length} following</span>
+                                <span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}>{this.props.user_visited_destinations.length} cities</span> | <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}>{this.props.user_followers.length} followers</span> | <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}>{this.props.user_following.length} following</span>
                             </div>
                             <div className="description">
                                 <p></p>

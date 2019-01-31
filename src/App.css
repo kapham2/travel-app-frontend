@@ -34,3 +34,7 @@
 .login-column {
   min-width: 400px;
 }
+
+.cursor-pointer:hover {
+  cursor: pointer;
+}
