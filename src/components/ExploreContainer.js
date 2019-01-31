@@ -59,7 +59,7 @@ class ExploreContainer extends React.Component {
                                 <div className="content">
                                     <p className="header">Explore</p>
                                     <div className="meta">
-                                        <span className="cursor-pointer" name="Places" onClick={this.onClickMenu}>Cities</span> | <span className="cursor-pointer" name="People" onClick={this.onClickMenu}>People</span>
+                                        <span className="cursor-pointer" name="Places" onClick={this.onClickMenu}>cities</span> · <span className="cursor-pointer" name="People" onClick={this.onClickMenu}>people</span>
                                     </div>
                                     <div className="description">
                                         <p></p>
