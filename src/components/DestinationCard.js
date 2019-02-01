@@ -16,7 +16,7 @@ class DestinationCard extends React.Component {
                         <div className="content">
                             <p className="header">{this.props.destination.city}, {this.props.destination.country}</p>
                             <div className="meta">
-                                <span>{this.props.users_visited.length} people visited | {this.props.users_saved.length} people saved</span>
+                                <span><strong>{this.props.users_visited.length}</strong> visited</span>
                             </div>
                             {/* <div className="description">
                                 <p></p>

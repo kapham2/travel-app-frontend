@@ -3,13 +3,15 @@ import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import DestinationCard from './DestinationCard'
 import DestinationPeopleNavigation from './DestinationPeopleNavigation'
+import DestinationPeopleContainer from './DestinationPeopleContainer'
 
 class DestinationContainer extends React.Component {
 
     constructor() {
         super()
         this.state = {
-            search: ""
+            search: "",
+            activeView: "People Who Visited"
         }
     }
 
@@ -63,7 +65,8 @@ class DestinationContainer extends React.Component {
                 </div>
                 
                 <div className="row">
-                    <DestinationPeopleNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} />
+                    {/* <DestinationPeopleNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} /> */}
+                    <DestinationPeopleContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
                 </div>
 
             </div>
