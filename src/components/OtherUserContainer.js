@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import OtherUserCard from './OtherUserCard'
-import OtherUserDestinationNavigation from './OtherUserDestinationNavigation'
 import OtherUserDestinationContainer from './OtherUserDestinationContainer'
 
 class OtherUserContainer extends React.Component {
