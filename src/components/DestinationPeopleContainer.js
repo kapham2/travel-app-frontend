@@ -15,8 +15,8 @@ class DestinationPeopleContainer extends React.Component {
         let list
         let empty
         
-        switch (this.props.activeView) {
-            case "People Who Visited":
+        // switch (this.props.activeView) {
+        //     case "People Who Visited":
                 list = this.getSearchedUser(this.props.users_visited)
                 if (this.props.users_visited.length === 0) {
                     empty = <div>No one has added {this.props.destination.city}, {this.props.destination.country} to their visited list.</div>
@@ -27,7 +27,7 @@ class DestinationPeopleContainer extends React.Component {
                 else {
                     empty = <div></div>
                 }
-                break
+                // break
             // case "People Who Saved":
             //     list = this.getSearchedUser(this.props.users_saved)
             //     if (this.props.users_saved.length === 0) {
@@ -40,10 +40,10 @@ class DestinationPeopleContainer extends React.Component {
             //         empty = <div></div>
             //     }
             //     break
-            default:
-                console.log("Oh no!")
-                break
-        }
+        //     default:
+        //         console.log("Oh no!")
+        //         break
+        // }
 
         return (
             <div className="ui container">

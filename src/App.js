@@ -9,7 +9,7 @@ import LoginContainer from './components/LoginContainer'
 import ExploreContainer from './components/ExploreContainer'
 import NotFoundContainer from './components/NotFoundContainer'
 import OtherUserContainer from './components/OtherUserContainer'
-import DestinationContainer from './components/DestinationContainer'
+// import DestinationContainer from './components/DestinationContainer'
 class App extends Component { 
 
   componentDidMount() {
@@ -41,7 +41,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" component={LoginContainer} />
           <PrivateRoute exact path={`/explore`} component={ExploreContainer} />
-          <PrivateRoute exact path="/places/:city" component={DestinationContainer} />
+          <PrivateRoute exact path="/places/:city" component={OtherUserContainer} />
           <PrivateRoute exact path="/404" component={NotFoundContainer} />
           <PrivateRoute exact path="/:username" component={OtherUserContainer} />
           <Redirect from="*" to="/" />

@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import OtherUserCard from './OtherUserCard'
 import OtherUserDestinationContainer from './OtherUserDestinationContainer'
+import DestinationCard from './DestinationCard'
+import DestinationPeopleContainer from './DestinationPeopleContainer'
 
 class OtherUserContainer extends React.Component {
 
@@ -37,29 +39,57 @@ class OtherUserContainer extends React.Component {
             this.props.history.push("/explore")
         }
 
-        fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
-            headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json()
-            }
-            else {
-                throw response
-            }
-        })
-        .then(response => {
-            console.log("fetch response:", response)
-            this.props.setOtherUser(response)
-        })
-        .catch(response => response.json().then(response => {
-            console.log("fetch error:", response.error)
-            this.props.history.push("/404")
-        }))
+        if (this.props.match.url.split("/")[1] === "places") {
+            fetch(`http://localhost:3333/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
+                headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                else {
+                    throw response
+                }
+            })
+            .then(response => {
+                // console.log("fetch response:", response)
+                this.props.setDestination(response)
+            })
+            .catch(response => response.json().then(response => {
+                // console.log("fetch error:", response.error)
+                this.props.history.push("/404")
+            }))
+        }
+        // if (this.props.match.url.split("/")[1] === :city)
+        else {
+            fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
+                headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                else {
+                    throw response
+                }
+            })
+            .then(response => {
+                // console.log("fetch response:", response)
+                this.props.setOtherUser(response)
+            })
+            .catch(response => response.json().then(response => {
+                // console.log("fetch error:", response.error)
+                this.props.history.push("/404")
+            }))
+        }
     }
 
     render() {
         // console.log("OtherUserContainer: this.props =>", this.props)
+
+        let card = this.props.match.url.split("/")[1] === "places" ? <DestinationCard {...this.props} /> : <OtherUserCard {...this.props} setActiveView={this.setActiveView}/>
+        let container = this.props.match.url.split("/")[1] === "places" ? <DestinationPeopleContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/> : <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
+
         return (
             <div className="ui very padded grid">
                 <div className="row"></div>
@@ -69,12 +99,14 @@ class OtherUserContainer extends React.Component {
                 </div>
 
                 <div className="row">
-                    <OtherUserCard {...this.props} setActiveView={this.setActiveView}/>
+                    {/* <OtherUserCard {...this.props} setActiveView={this.setActiveView}/> */}
+                    {card}
                 </div>
                 
                 <div className="row">
                     {/* <OtherUserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} /> */}
-                    <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
+                    {/* <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/> */}
+                    {container}
                 </div>
 
             </div>
@@ -100,12 +132,18 @@ const mapStateToProps = (state) => {
         other_user_saved_destinations: state.other_user_saved_destinations,
         other_user_followers: state.other_user_followers,
         other_user_following: state.other_user_following,
+
+        destination: state.destination,
+        photo_url: state.photo_url,
+        users_visited: state.users_visited,
+        users_saved: state.users_saved
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
+        setDestination: data => dispatch({ type: 'SET_DESTINATION', data })
     }
 }
 

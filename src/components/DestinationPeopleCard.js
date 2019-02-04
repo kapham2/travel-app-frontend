@@ -18,19 +18,19 @@ class DestinationPeopleCard extends React.Component {
     onClickButton = (event) => {
         // console.log("DestinationPeopleCard: clicked", event.target.getAttribute("name"))
         const clickedButton = event.target.getAttribute("name")
-        switch (this.props.activeView) {
-            case "People Who Visited":
+        // switch (this.props.activeView) {
+        //     case "People Who Visited":
                 // Click View Page Button
                 clickedButton === "View Page" ? this.getOtherUser() : console.log("Oh no!")
-                break;
-            case "People Who Saved":
-                // Click View Page Button
-                clickedButton === "View Page" ? this.getOtherUser() : console.log("Oh no!")
-                break;
-            default:
-                console.log("Oh no!")
-                break;
-        }
+        //         break;
+        //     case "People Who Saved":
+        //         // Click View Page Button
+        //         clickedButton === "View Page" ? this.getOtherUser() : console.log("Oh no!")
+        //         break;
+        //     default:
+        //         console.log("Oh no!")
+        //         break;
+        // }
     }
 
     getOtherUser = () => {
@@ -57,23 +57,23 @@ class DestinationPeopleCard extends React.Component {
         let content_header
         let content_meta
 
-        switch (this.props.activeView) {
-            case "People Who Visited":
+        // switch (this.props.activeView) {
+        //     case "People Who Visited":
                 button1 = "View Page"
                 image_url = this.props.item.avatar_url
                 content_header = this.props.item.username
                 content_meta = ""
-                break;
-            case "People Who Saved":
-                button1 = "View Page"
-                image_url = this.props.item.avatar_url
-                content_header = this.props.item.username
-                content_meta = ""
-                break;
-            default:
-                console.log("Oh no!")
-                break;
-        }
+        //         break;
+        //     case "People Who Saved":
+        //         button1 = "View Page"
+        //         image_url = this.props.item.avatar_url
+        //         content_header = this.props.item.username
+        //         content_meta = ""
+        //         break;
+        //     default:
+        //         console.log("Oh no!")
+        //         break;
+        // }
 
         return (
             <div className="card">
