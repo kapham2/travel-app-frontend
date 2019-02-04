@@ -6,7 +6,6 @@ import '../node_modules/semantic-ui-css/semantic.css'
 
 import PrivateRoute from './components/PrivateRoute'
 import LoginContainer from './components/LoginContainer'
-import UserContainer from './components/UserContainer'
 import ExploreContainer from './components/ExploreContainer'
 import NotFoundContainer from './components/NotFoundContainer'
 import OtherUserContainer from './components/OtherUserContainer'
@@ -41,7 +40,6 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={LoginContainer} />
-          {/* <PrivateRoute exact path={`/${this.props.user.username}`} component={UserContainer} /> */}
           <PrivateRoute exact path={`/explore`} component={ExploreContainer} />
           <PrivateRoute exact path="/places/:city" component={DestinationContainer} />
           <PrivateRoute exact path="/404" component={NotFoundContainer} />
