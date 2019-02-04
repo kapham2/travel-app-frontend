@@ -14,10 +14,10 @@ class OtherUserContainer extends React.Component {
         }
     }
 
-    setActiveView = (newView => {
+    setActiveView = (newView) => {
         // console.log("OtherUserContainer: => setActiveView", newView)
         this.setState({ activeView: newView })
-    })
+    }
 
     onChangeSearch = (e) => {
         // console.log("OtherUserContainer: onChangeSearch =>", e.target.value)
@@ -86,6 +86,14 @@ const mapStateToProps = (state) => {
     return { 
         user: state.user,
         avatar_url: state.avatar_url,
+        user_visited_destinations: state.user_visited_destinations,
+        user_saved_destinations: state.user_saved_destinations,
+        user_followers: state.user_followers,
+        user_following: state.user_following,
+
+        user_destinations: state.user_destinations,
+        follows: state.follows,
+        
         other_user: state.other_user,
         other_avatar_url: state.other_avatar_url,
         other_user_visited_destinations: state.other_user_visited_destinations,
