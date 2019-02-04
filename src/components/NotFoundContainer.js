@@ -55,8 +55,18 @@ class NotFoundContainer extends React.Component {
 const mapStateToProps = (state) => {
     return { 
         user: state.user,
-        avatar_url: state.avatar_url
+        avatar_url: state.avatar_url,
+        user_visited_destinations: state.user_visited_destinations,
+        user_saved_destinations: state.user_saved_destinations,
+        user_followers: state.user_followers,
+        user_following: state.user_following,
     }
 }
 
-export default connect(mapStateToProps)(NotFoundContainer)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data })
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NotFoundContainer)
