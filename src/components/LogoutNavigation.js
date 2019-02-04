@@ -9,6 +9,14 @@ class LogoutNavigation extends React.Component {
     }
 
     onClickProfile = () => {
+        this.props.setOtherUser({
+            user: this.props.user,
+            avatar_url: this.props.avatar_url,
+            visited_destinations: this.props.user_visited_destinations,
+            saved_destinations: this.props.user_saved_destinations,
+            followers: this.props.user_followers,
+            following: this.props.user_following,
+        })
         this.props.history.push(`/${this.props.user.username}`)
     }
 
