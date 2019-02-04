@@ -1,10 +1,27 @@
 import React from 'react'
+import UserCardModalUploadAvatar from './UserCardModalUploadAvatar'
 
 class OtherUserCard extends React.Component {
 
     onClickMenu = (event) => {
         // console.log("OtherUserCard: clicked", event.target.getAttribute('name'))
         this.props.setActiveView(event.target.getAttribute('name'))
+    }
+
+    onMouseOverAvatar = (e) => {
+        if (this.props.user.id === this.props.other_user.id) {
+            e.target.previousSibling.classList.add("active")
+        }
+    }
+
+    onMouseLeaveAvatar = (e) => {
+        if (this.props.user.id === this.props.other_user.id) {
+            e.target.classList.remove("active")
+        }
+    }
+    
+    onClickUpdateButton = (e) => {
+        document.querySelector('div[name="modal-upload-avatar"]').classList.add("active")
     }
 
     render() {
@@ -14,8 +31,11 @@ class OtherUserCard extends React.Component {
                 <div className="ui very relaxed unstackable items">
                     <div className="item">
 
-                        <div className="ui small circular image">
-                            <img src={this.props.other_avatar_url} alt="" />
+                        <div className="ui small circular blurring dimmable image">
+                            <div className="ui dimmer" onMouseLeave={this.onMouseLeaveAvatar} >
+                                <div className="ui inverted button" onClick={this.onClickUpdateButton} >Update</div>
+                            </div>
+                            <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
                         </div>
 
                         <div className="content">
@@ -33,6 +53,8 @@ class OtherUserCard extends React.Component {
 
                     </div>
                 </div>
+
+                <UserCardModalUploadAvatar {...this.props} />
             </div>
         )
     }
