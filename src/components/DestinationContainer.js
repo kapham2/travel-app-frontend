@@ -77,6 +77,11 @@ const mapStateToProps = (state) => {
     return { 
         user: state.user,
         avatar_url: state.avatar_url,
+        user_visited_destinations: state.user_visited_destinations,
+        user_saved_destinations: state.user_saved_destinations,
+        user_followers: state.user_followers,
+        user_following: state.user_following,
+
         destination: state.destination,
         photo_url: state.photo_url,
         users_visited: state.users_visited,
