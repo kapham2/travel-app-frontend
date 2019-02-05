@@ -4,7 +4,6 @@ import LogoutNavigation from './LogoutNavigation'
 import OtherUserCard from './OtherUserCard'
 import OtherUserDestinationContainer from './OtherUserDestinationContainer'
 import DestinationCard from './DestinationCard'
-import DestinationPeopleContainer from './DestinationPeopleContainer'
 
 class OtherUserContainer extends React.Component {
 
@@ -40,6 +39,7 @@ class OtherUserContainer extends React.Component {
         }
 
         if (this.props.match.url.split("/")[1] === "places") {
+            this.setActiveView("People Who Visited")
             fetch(`http://localhost:3333/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
             })
@@ -62,6 +62,7 @@ class OtherUserContainer extends React.Component {
         }
         // if (this.props.match.url.split("/")[1] === :city)
         else {
+            this.setActiveView("Visited")
             fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
             })
@@ -88,14 +89,13 @@ class OtherUserContainer extends React.Component {
         // console.log("OtherUserContainer: this.props =>", this.props)
 
         let card = this.props.match.url.split("/")[1] === "places" ? <DestinationCard {...this.props} /> : <OtherUserCard {...this.props} setActiveView={this.setActiveView}/>
-        let container = this.props.match.url.split("/")[1] === "places" ? <DestinationPeopleContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/> : <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/>
 
         return (
             <div className="ui very padded grid">
                 <div className="row"></div>
 
                 <div className="ui row">
-                    <LogoutNavigation {...this.props} search={this.state.search} onChangeSearch={this.onChangeSearch} />
+                    <LogoutNavigation {...this.props} setActiveView={this.setActiveView} search={this.state.search} onChangeSearch={this.onChangeSearch} />
                 </div>
 
                 <div className="row">
@@ -105,8 +105,7 @@ class OtherUserContainer extends React.Component {
                 
                 <div className="row">
                     {/* <OtherUserDestinationNavigation {...this.props} search={this.state.search} clearSearch={this.clearSearch} /> */}
-                    {/* <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} search={this.state.search} clearSearch={this.clearSearch}/> */}
-                    {container}
+                    <OtherUserDestinationContainer {...this.props} activeView={this.state.activeView} setActiveView={this.setActiveView} search={this.state.search} clearSearch={this.clearSearch}/>
                 </div>
 
             </div>

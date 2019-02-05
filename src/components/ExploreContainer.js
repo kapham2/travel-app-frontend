@@ -43,7 +43,7 @@ class ExploreContainer extends React.Component {
                 <div className="row"></div>
 
                 <div className="ui row">
-                    <LogoutNavigation {...this.props} search={this.state.search} onChangeSearch={this.onChangeSearch} />
+                    <LogoutNavigation {...this.props} setActiveView={this.setActiveView} search={this.state.search} onChangeSearch={this.onChangeSearch} />
                 </div>
 
                 <div className="row">

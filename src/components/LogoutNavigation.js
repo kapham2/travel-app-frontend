@@ -17,6 +17,7 @@ class LogoutNavigation extends React.Component {
             followers: this.props.user_followers,
             following: this.props.user_following,
         })
+        this.props.setActiveView("Visited")
         this.props.history.push(`/${this.props.user.username}`)
     }
 
