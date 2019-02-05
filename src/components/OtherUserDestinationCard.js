@@ -21,6 +21,10 @@ class OtherUserDestinationCard extends React.Component {
         switch (this.props.activeView) {
             case "Visited":
                 // Click View Page or Remove Button
+                if (clickedButton === "View Page") {
+                    // console.log("this.props => ", this.props)
+                    this.props.setActiveView("People Who Visited")
+                }
                 clickedButton === "View Page" ? this.getDestination() : this.deleteUserDestination("Visited")
                 break;
             // case "Saved":
@@ -43,6 +47,16 @@ class OtherUserDestinationCard extends React.Component {
             //     // Click View Page Button or Follow Button
             //     clickedButton === "Follow" ? this.postFollow() : this.getOtherUser()
             //     break;
+
+            case "People Who Visited":
+                // Click View Page Button
+                if (clickedButton === "View Page") {
+                    // console.log("this.props => ", this.props)
+                    this.props.setActiveView("Visited")
+                }
+                clickedButton === "View Page" ? this.getOtherUser() : (clickedButton === "Unfollow" ? this.deleteFollow("Following") : this.postFollow())
+                break;
+
             default:
                 console.log("Oh no!")
                 break;
@@ -197,6 +211,18 @@ class OtherUserDestinationCard extends React.Component {
             //     content_header = this.props.item.username
             //     content_meta = ""
             //     break;
+
+            case "People Who Visited":
+                button1 = "View Page"
+                found = this.props.user_following.find((following) => {
+                    return following.id ===this.props.item.id
+                })
+                button2 = found ? "Unfollow" : "Follow"
+                image_url = this.props.item.avatar_url
+                content_header = this.props.item.username
+                content_meta = ""
+                break;
+
             default:
                 console.log("Oh no!")
                 break;
