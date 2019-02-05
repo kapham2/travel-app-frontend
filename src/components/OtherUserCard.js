@@ -26,6 +26,22 @@ class OtherUserCard extends React.Component {
 
     render() {
         // console.log("OtherUserCard: this.props => ", this.props)
+
+        let img_url
+        let header_text
+        let meta_text
+
+        if (this.props.activeView === "People Who Visited") {
+            img_url = <img src={this.props.photo_url} alt="" />
+            header_text = <p className="header">{this.props.destination.city}, {this.props.destination.country}</p>
+            meta_text = <div className="meta"><span><strong>{this.props.users_visited.length}</strong> visited</span></div>
+        }
+        else {
+            img_url = <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
+            header_text = <p className="header">{this.props.other_user.username}</p>
+            meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong>{this.props.other_user_visited_destinations.length}</strong> cities</span> · <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong>{this.props.other_user_followers.length}</strong> followers</span> · <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong>{this.props.other_user_following.length}</strong> following</span></div>
+        }
+
         return (
             <div className="ui text container">
                 <div className="ui very relaxed unstackable items">
@@ -35,14 +51,17 @@ class OtherUserCard extends React.Component {
                             <div className="ui dimmer" onMouseLeave={this.onMouseLeaveAvatar} >
                                 <div className="ui inverted button" onClick={this.onClickUpdateButton} >Update</div>
                             </div>
-                            <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
+                            {/* <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} /> */}
+                            {img_url}
                         </div>
 
                         <div className="content">
-                            <p className="header">{this.props.other_user.username}</p>
+                            {/* <p className="header">{this.props.other_user.username}</p>
                             <div className="meta">
                                 <span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong>{this.props.other_user_visited_destinations.length}</strong> cities</span> · <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong>{this.props.other_user_followers.length}</strong> followers</span> · <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong>{this.props.other_user_following.length}</strong> following</span>
-                            </div>
+                            </div> */}
+                            {header_text}
+                            {meta_text}
                             <div className="description">
                                 <p></p>
                             </div>
