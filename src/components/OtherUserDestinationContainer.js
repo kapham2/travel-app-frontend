@@ -34,18 +34,18 @@ class OtherUserDestinationContainer extends React.Component {
                     empty = <div></div>
                 }
                 break
-            case "Saved":
-                list = this.getSearchedDestination(this.props.other_user_saved_destinations)
-                if (this.props.other_user_saved_destinations.length === 0) {
-                    empty = <div>{this.props.other_user.username} doesn't have any saved places yet.</div>
-                }
-                else if (list.length === 0) {
-                    empty = <div>No saved places match your search. :(</div>
-                }
-                else {
-                    empty = <div></div>
-                }
-                break
+            // case "Saved":
+            //     list = this.getSearchedDestination(this.props.other_user_saved_destinations)
+            //     if (this.props.other_user_saved_destinations.length === 0) {
+            //         empty = <div>{this.props.other_user.username} doesn't have any saved places yet.</div>
+            //     }
+            //     else if (list.length === 0) {
+            //         empty = <div>No saved places match your search. :(</div>
+            //     }
+            //     else {
+            //         empty = <div></div>
+            //     }
+            //     break
             // case "Explore Destinations":
             //     list = this.props.more_destinations
             //     break
@@ -76,6 +76,20 @@ class OtherUserDestinationContainer extends React.Component {
             // case "Explore Users":
             //     list = this.props.more_users
             //     break
+            
+            case "People Who Visited":
+                list = this.getSearchedUser(this.props.users_visited)
+                if (this.props.users_visited.length === 0) {
+                    empty = <div>No one has added {this.props.destination.city}, {this.props.destination.country} to their visited list.</div>
+                }
+                else if (list.length === 0) {
+                    empty = <div>No one matches your search. :(</div>
+                }
+                else {
+                    empty = <div></div>
+                }
+                break
+
             default:
                 console.log("Oh no!")
                 break
