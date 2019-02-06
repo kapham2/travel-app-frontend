@@ -5,6 +5,7 @@ class LogoutNavigation extends React.Component {
 
     onClickLogout = () => {
         localStorage.clear()
+        this.props.clearState()
         this.props.history.push("/")
     }
 

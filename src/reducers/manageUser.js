@@ -147,6 +147,29 @@ export default function manageUser(state = {
                 ...state,
                 avatar_url: action.avatar_url
             }
+        case 'CLEAR_STATE':
+            return {
+                user: {},
+                avatar_url: "",
+                user_visited_destinations: [],
+                user_saved_destinations: [],
+                more_destinations: [],
+                user_followers: [],
+                user_following: [],
+                more_users: [],
+                user_destinations: [],
+                follows: [],
+                other_user: {},
+                other_avatar_url: "",
+                other_user_visited_destinations: [],
+                other_user_saved_destinations: [],
+                other_user_followers: [],
+                other_user_following: [],
+                destination: {},
+                photo_url: "",
+                users_visited: [],
+                users_saved: []
+            }
         default:
             return state
     }

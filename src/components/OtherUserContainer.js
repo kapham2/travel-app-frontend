@@ -142,7 +142,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
-        setDestination: data => dispatch({ type: 'SET_DESTINATION', data })
+        setDestination: data => dispatch({ type: 'SET_DESTINATION', data }),
+        clearState: () => dispatch({ type: 'CLEAR_STATE' })
     }
 }
 
