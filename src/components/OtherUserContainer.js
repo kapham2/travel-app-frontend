@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import LogoutNavigation from './LogoutNavigation'
 import OtherUserCard from './OtherUserCard'
 import OtherUserDestinationContainer from './OtherUserDestinationContainer'
-import DestinationCard from './DestinationCard'
-
 class OtherUserContainer extends React.Component {
 
     constructor() {
@@ -88,8 +86,6 @@ class OtherUserContainer extends React.Component {
     render() {
         // console.log("OtherUserContainer: this.props =>", this.props)
 
-        let card = this.props.match.url.split("/")[1] === "places" ? <DestinationCard {...this.props} /> : <OtherUserCard {...this.props} setActiveView={this.setActiveView}/>
-
         return (
             <div className="ui very padded grid">
                 <div className="row"></div>
@@ -99,8 +95,7 @@ class OtherUserContainer extends React.Component {
                 </div>
 
                 <div className="row">
-                    {/* <OtherUserCard {...this.props} setActiveView={this.setActiveView}/> */}
-                    {card}
+                    <OtherUserCard {...this.props} activeView={this.state.activeView} setActiveView={this.setActiveView}/>
                 </div>
                 
                 <div className="row">
