@@ -32,11 +32,10 @@ class OtherUserContainer extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.match.url.slice(1) === "explore") {
-            this.props.history.push("/explore")
+        if (this.props.match.url.split("/")[1] === "explore" && this.props.match.url.split("/")[2] === "cities") {
+            this.setActiveView("Explore Cities")
         }
-
-        if (this.props.match.url.split("/")[1] === "places") {
+        else if (this.props.match.url.split("/")[1] === "places") {
             this.setActiveView("People Who Visited")
             fetch(`http://localhost:3333/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
@@ -116,6 +115,9 @@ const mapStateToProps = (state) => {
         user_saved_destinations: state.user_saved_destinations,
         user_followers: state.user_followers,
         user_following: state.user_following,
+
+        more_destinations: state.more_destinations,
+        more_users: state.more_users,
 
         user_destinations: state.user_destinations,
         follows: state.follows,

@@ -43,7 +43,8 @@ class LogoutNavigation extends React.Component {
     // }
 
     onClickExplore = () => {
-        this.props.history.push(`/explore`)
+        this.props.setActiveView("Explore Cities")
+        this.props.history.push(`/explore/cities`)
     }
 
     render() {
