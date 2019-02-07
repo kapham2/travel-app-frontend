@@ -90,6 +90,32 @@ class OtherUserDestinationContainer extends React.Component {
                 }
                 break
 
+            case "Explore Cities":
+                list = this.getSearchedDestination(this.props.more_destinations)
+                if (this.props.more_destinations.length === 0) {
+                    empty = <div>You've added all the places to your lists! :)</div>
+                }
+                else if (list.length === 0) {
+                    empty = <div>No places match your search. :(</div>
+                }
+                else {
+                    empty = <div></div>
+                }
+                break
+
+            case "Explore People":
+                list = this.getSearchedUser(this.props.more_users)
+                if (this.props.more_users.length === 0) {
+                    empty = <div>You've followed everyone! :)</div>
+                }
+                else if (list.length === 0) {
+                    empty = <div>No one matchs your search. :(</div>
+                }
+                else {
+                    empty = <div></div>
+                }
+                break
+
             default:
                 console.log("Oh no!")
                 break
