@@ -57,9 +57,48 @@ class OtherUserDestinationCard extends React.Component {
                 clickedButton === "View Page" ? this.getOtherUser() : (clickedButton === "Unfollow" ? this.deleteFollow("Following") : this.postFollow())
                 break;
 
+            case "Explore Cities":
+                // Click View Page Button or Visited Button
+                if (clickedButton === "View Page") {
+                    // console.log("this.props => ", this.props)
+                    this.props.setActiveView("People Who Visited")
+                }
+                clickedButton === "View Page" ? this.getDestination() : this.postUserDestination(true)
+                break;
+
+            case "Explore People":
+                // Click View Page Button or Follow Button
+                clickedButton === "View Page" ? this.getOtherUser() : this.postFollow()
+                break;
+
             default:
                 console.log("Oh no!")
                 break;
+        }
+    }
+
+    postUserDestination = (visited) => {
+        // console.log("ExplorePlacesPeopleCard: postUserDestination => ")
+        fetch('http://localhost:3333/api/v1/user_destinations', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization' : `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify({
+                user_id: this.props.user.id,
+                destination_id: this.props.item.id,
+                visited: visited
+            })
+        })
+        .then(response => response.json())
+        .then(response => this.props.addUserDestination(response))
+        
+        if (visited) {
+            this.props.addVisitedDestination(this.props.item)
+        }
+        else {
+            this.props.addSavedDestination(this.props.item)
         }
     }
 
@@ -231,6 +270,22 @@ class OtherUserDestinationCard extends React.Component {
                 content_meta = ""
                 break;
 
+            case "Explore Cities":
+                button1 = "View Page"
+                button2 = "Visited"
+                image_url = `/destinations/${this.props.item.city.toLowerCase().replace(/ /g, "")}.jpg`
+                content_header = this.props.item.city
+                content_meta = this.props.item.country
+                break;
+
+            case "Explore People":
+                button1 = "View Page"
+                button2 = "Follow"
+                image_url = this.props.item.avatar_url
+                content_header = this.props.item.username
+                content_meta = ""
+                break;
+
             default:
                 console.log("Oh no!")
                 break;
@@ -261,7 +316,7 @@ class OtherUserDestinationCard extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-//         addVisitedDestination: destination => dispatch({ type: 'ADD_VISITED_DESTINATION', destination }),
+        addVisitedDestination: destination => dispatch({ type: 'ADD_VISITED_DESTINATION', destination }),
 //         addSavedDestination: destination => dispatch({ type: 'ADD_SAVED_DESTINATION', destination }),
         deleteFromVisitedDestinations: destination => dispatch({ type: 'DELETE_FROM_VISITED_DESTINATIONS', destination }),
 //         deleteFromSavedDestinations: destination => dispatch({ type: 'DELETE_FROM_SAVED_DESTINATIONS', destination }),
@@ -273,6 +328,7 @@ const mapDispatchToProps = (dispatch) => {
         deleteFromOtherFollowing: user => dispatch({ type: 'DELETE_FROM_OTHER_FOLLOWING', user}),
 //         deleteFromFollowers: user => dispatch({ type: 'DELETE_FROM_FOLLOWERS', user }),
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
+        addUserDestination: data => dispatch({ type: 'ADD_USER_DESTINATION', data }),
         deleteFromUserDestinations: userDestination => dispatch({ type: 'DELETE_FROM_USER_DESTINATIONS', userDestination }),
         deleteFromFollows: follow => dispatch({ type: 'DELETE_FROM_FOLLOWS', follow }),
         addFollow: data => dispatch({ type: 'ADD_FOLLOW', data }),
