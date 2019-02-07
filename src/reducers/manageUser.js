@@ -92,15 +92,25 @@ export default function manageUser(state = {
             return {
                 ...state,
                 user_following: [...state.user_following, action.user],
-                other_user_following: [...state.other_user_following, action.user],
+                // other_user_following: [...state.other_user_following, action.user],
                 more_users: state.more_users.filter(user => user.id !== action.user.id)
+            }
+        case 'ADD_OTHER_FOLLOWING':
+            return {
+                ...state,
+                other_user_following: [...state.other_user_following, action.user],
             }
         case 'DELETE_FROM_FOLLOWING':
             return {
                 ...state,
                 user_following: state.user_following.filter(user => user.id !== action.user.id),
-                other_user_following: state.other_user_following.filter(user => user.id !== action.user.id),                
+                // other_user_following: state.other_user_following.filter(user => user.id !== action.user.id),                
                 more_users: [...state.more_users, action.user]
+            }
+        case 'DELETE_FROM_OTHER_FOLLOWING':
+            return {
+                ...state,
+                other_user_following: state.other_user_following.filter(user => user.id !== action.user.id),                
             }
         case 'DELETE_FROM_FOLLOWERS':
             return {

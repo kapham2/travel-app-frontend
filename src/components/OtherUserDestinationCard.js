@@ -100,6 +100,10 @@ class OtherUserDestinationCard extends React.Component {
         .then(response => this.props.addFollow(response))
         
         this.props.addFollowing(this.props.item)
+
+        if (this.props.user.id === this.props.other_user.id) {
+            this.props.addOtherFollowing(this.props.item)
+        }
     }
 
     deleteFollow = (fromTab) => {
@@ -120,6 +124,10 @@ class OtherUserDestinationCard extends React.Component {
 
         if (fromTab === "Following") {
             this.props.deleteFromFollowing(this.props.item)
+            
+            if (this.props.user.id === this.props.other_user.id) {
+                this.props.deleteFromOtherFollowing(this.props.item)
+            }
         }
     }
 
@@ -260,7 +268,9 @@ const mapDispatchToProps = (dispatch) => {
 //         patchFromVisitedDestinations: destination => dispatch({ type: 'PATCH_FROM_VISITED_DESTINATIONS', destination }),
 //         patchFromSavedDestinations: destination => dispatch({ type: 'PATCH_FROM_SAVED_DESTINATIONS', destination }),
         addFollowing: user => dispatch({ type: 'ADD_FOLLOWING', user }),
+        addOtherFollowing: user => dispatch({ type: 'ADD_OTHER_FOLLOWING', user }),
         deleteFromFollowing: user => dispatch({ type: 'DELETE_FROM_FOLLOWING', user }),
+        deleteFromOtherFollowing: user => dispatch({ type: 'DELETE_FROM_OTHER_FOLLOWING', user}),
 //         deleteFromFollowers: user => dispatch({ type: 'DELETE_FROM_FOLLOWERS', user }),
         setOtherUser: data => dispatch({ type: 'SET_OTHER_USER', data }),
         deleteFromUserDestinations: userDestination => dispatch({ type: 'DELETE_FROM_USER_DESTINATIONS', userDestination }),

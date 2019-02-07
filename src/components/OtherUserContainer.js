@@ -58,7 +58,7 @@ class OtherUserContainer extends React.Component {
                 this.props.history.push("/404")
             }))
         }
-        // if (this.props.match.url.split("/")[1] === :city)
+        // if (this.props.match.url.split("/")[1] === :username)
         else {
             this.setActiveView("Visited")
             fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
