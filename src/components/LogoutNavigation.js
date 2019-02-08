@@ -32,19 +32,24 @@ class LogoutNavigation extends React.Component {
         document.querySelector('div[name="dropdown-menu"').classList.add("hidden")
     }
 
-    // onClickDropDownExplore = () => {
-    //     document.querySelector('div[name="dropdown-menu-explore"').classList.remove("hidden")
-    //     document.querySelector('div[name="dropdown-menu-explore"').classList.add("visible")
-    // }
+    onClickDropDownExplore = () => {
+        document.querySelector('div[name="dropdown-menu-explore"').classList.remove("hidden")
+        document.querySelector('div[name="dropdown-menu-explore"').classList.add("visible")
+    }
 
-    // onMouseLeaveDropDownExplore = () => {
-    //     document.querySelector('div[name="dropdown-menu-explore"').classList.remove("visible")
-    //     document.querySelector('div[name="dropdown-menu-explore"').classList.add("hidden")
-    // }
+    onMouseLeaveDropDownExplore = () => {
+        document.querySelector('div[name="dropdown-menu-explore"').classList.remove("visible")
+        document.querySelector('div[name="dropdown-menu-explore"').classList.add("hidden")
+    }
 
     onClickExplore = () => {
         this.props.setActiveView("Explore Cities")
         this.props.history.push(`/explore/cities`)
+    }
+
+    onClickExplorePeople = () => {
+        this.props.setActiveView("Explore People")
+        this.props.history.push(`/explore/people`)
     }
 
     render() {
@@ -65,18 +70,18 @@ class LogoutNavigation extends React.Component {
                         </div>
                     </div>
 
-                    {/* <div className="ui right dropdown item" onClick={this.onClickDropDownExplore} onMouseLeave={this.onMouseLeaveDropDownExplore} >
+                    <div className="ui right dropdown item" onClick={this.onClickDropDownExplore} onMouseLeave={this.onMouseLeaveDropDownExplore} >
                         Explore
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu-explore" onMouseLeave={this.onMouseLeaveDropDownExplore} >
-                            <div className="item" onClick={this.onClickExplore} >Places</div>
-                            <div className="item" onClick={this.onClickExplore} >People</div>
+                            <div className="item" onClick={this.onClickExplore} >Cities</div>
+                            <div className="item" onClick={this.onClickExplorePeople} >People</div>
                         </div>
-                    </div> */}
-
-                    <div className="ui right link item" onClick={this.onClickExplore} >
-                        Explore
                     </div>
+
+                    {/* <div className="ui right link item" onClick={this.onClickExplore} >
+                        Explore
+                    </div> */}
                     
                     <div className="ui right dropdown item" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
                         <div className="ui mini circular image">

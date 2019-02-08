@@ -36,6 +36,11 @@ class OtherUserCard extends React.Component {
             header_text = <p className="header">Explore Cities</p>
             meta_text = <div className="meta"><span><strong>{this.props.more_destinations.length}</strong> cities</span></div>
         }
+        else if (this.props.activeView === "Explore People") {
+            img_url = <img src="/helloworldsquare.jpg" alt="" />
+            header_text = <p className="header">Explore People</p>
+            meta_text = <div className="meta"><span><strong>{this.props.more_users.length}</strong> people</span></div>
+        }
         else if (this.props.activeView === "People Who Visited") {
             img_url = <img src={this.props.photo_url} alt="" />
             header_text = <p className="header">{this.props.destination.city}, {this.props.destination.country}</p>
@@ -44,7 +49,7 @@ class OtherUserCard extends React.Component {
         else {
             img_url = <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
             header_text = <p className="header">{this.props.other_user.username}</p>
-            meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong>{this.props.other_user_visited_destinations.length}</strong> cities</span> · <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong>{this.props.other_user_followers.length}</strong> followers</span> · <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong>{this.props.other_user_following.length}</strong> following</span></div>
+            meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong name="Visited">{this.props.other_user_visited_destinations.length}</strong> cities</span> · <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong name="Followers">{this.props.other_user_followers.length}</strong> followers</span> · <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong name="Following">{this.props.other_user_following.length}</strong> following</span></div>
         }
 
         return (
