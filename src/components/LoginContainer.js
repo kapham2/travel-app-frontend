@@ -7,18 +7,14 @@ class LoginContainer extends React.Component {
     render() {
         // console.log("LoginContainer: this.props =>", this.props)
         return (
-            <div className="ui very padded centered grid">
-                <div className="row"></div>
-                <div className="row"></div>
-
-                <div className="stretched row">
-                    <div className="column login-column computer only">
+            <div className="ui centered grid login-grid">
+                <div className="stretched row middle aligned">
+                    <div className="column login-column computer only tablet only">
                         <img className="ui rounded bordered image" src="/helloworld.jpg" alt="" />
                     </div>
-                    <div className="column login-column">
-                        {/* <LoginForm {...this.props} setUser={this.props.setUser} /> */}
-                        <LoginForm {...this.props} />
 
+                    <div className="column login-column">
+                        <LoginForm {...this.props} />
                     </div>
                 </div>
             </div>

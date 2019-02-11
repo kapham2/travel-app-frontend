@@ -31,8 +31,13 @@
   }
 } */
 
+.login-grid {
+  height: 100vh;
+}
+
 .login-column {
-  min-width: 400px;
+  min-width: 390px;
+  min-height: 450px;
 }
 
 .cursor-pointer:hover {
