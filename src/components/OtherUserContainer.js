@@ -39,7 +39,7 @@ class OtherUserContainer extends React.Component {
             this.setActiveView("Explore People")
         }
         else if (this.props.match.url.split("/")[1] === "places") {
-            this.setActiveView("People Who Visited")
+            this.setActiveView("Destination")
             fetch(`http://localhost:3333/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
             })

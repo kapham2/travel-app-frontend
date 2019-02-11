@@ -77,7 +77,7 @@ class OtherUserDestinationContainer extends React.Component {
             //     list = this.props.more_users
             //     break
             
-            case "People Who Visited":
+            case "Destination":
                 list = this.getSearchedUser(this.props.users_visited)
                 if (this.props.users_visited.length === 0) {
                     empty = <div>No one has added {this.props.destination.city}, {this.props.destination.country} to their visited list.</div>

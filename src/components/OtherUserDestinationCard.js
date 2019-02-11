@@ -23,7 +23,7 @@ class OtherUserDestinationCard extends React.Component {
                 // Click View Page or Remove Button
                 if (clickedButton === "View Page") {
                     // console.log("this.props => ", this.props)
-                    this.props.setActiveView("People Who Visited")
+                    this.props.setActiveView("Destination")
                 }
                 clickedButton === "View Page" ? this.getDestination() : this.deleteUserDestination("Visited")
                 break;
@@ -48,7 +48,7 @@ class OtherUserDestinationCard extends React.Component {
             //     clickedButton === "Follow" ? this.postFollow() : this.getOtherUser()
             //     break;
 
-            case "People Who Visited":
+            case "Destination":
                 // Click View Page Button
                 if (clickedButton === "View Page") {
                     // console.log("this.props => ", this.props)
@@ -61,7 +61,7 @@ class OtherUserDestinationCard extends React.Component {
                 // Click View Page Button or Visited Button
                 if (clickedButton === "View Page") {
                     // console.log("this.props => ", this.props)
-                    this.props.setActiveView("People Who Visited")
+                    this.props.setActiveView("Destination")
                 }
                 clickedButton === "View Page" ? this.getDestination() : this.postUserDestination(true)
                 break;
@@ -259,7 +259,7 @@ class OtherUserDestinationCard extends React.Component {
             //     content_meta = ""
             //     break;
 
-            case "People Who Visited":
+            case "Destination":
                 button1 = "View Page"
                 found = this.props.user_following.find((following) => {
                     return following.id ===this.props.item.id

@@ -41,7 +41,7 @@ class OtherUserCard extends React.Component {
             header_text = <p className="header">Explore People</p>
             meta_text = <div className="meta"><span><strong>{this.props.more_users.length}</strong> people</span></div>
         }
-        else if (this.props.activeView === "People Who Visited") {
+        else if (this.props.activeView === "Destination") {
             img_url = <img src={this.props.photo_url} alt="" />
             header_text = <p className="header">{this.props.destination.city}, {this.props.destination.country}</p>
             meta_text = <div className="meta"><span><strong>{this.props.users_visited.length}</strong> visited</span></div>
