@@ -44,3 +44,15 @@
   cursor: pointer;
   color:black;
 }
+
+@media only screen and (max-width: 767px) {
+  #hide-mobile-only {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  #show-mobile-only {
+    display: none;
+  }
+}

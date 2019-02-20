@@ -60,23 +60,31 @@ class LogoutNavigation extends React.Component {
                 <div className="ui text container">
                     <div className="ui header link item" onClick={this.onClickProfile}>
                         <i className="plane icon"></i>
-                        <div className="computer only">HelloWorld</div>
+                        <div id="hide-mobile-only">HelloWorld</div>
                     </div>
 
-                    <div className="item">
+                    <div className="item" id="hide-mobile-only">
                         <div className="ui icon input">
                             <input type="text" placeholder="Search..." value={this.props.search} onChange={/*_.debounce(this.props.onChangeSearch, 500)*/this.props.onChangeSearch} />
                             <i className="search icon"></i>
                         </div>
                     </div>
 
-                    <div className="ui right dropdown item" onClick={this.onClickDropDownExplore} onMouseLeave={this.onMouseLeaveDropDownExplore} >
+                    <div className="ui right dropdown item" id="hide-mobile-only"onClick={this.onClickDropDownExplore} onMouseLeave={this.onMouseLeaveDropDownExplore} >
                         Explore
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu-explore" onMouseLeave={this.onMouseLeaveDropDownExplore} >
                             <div className="item" onClick={this.onClickExplore} >Cities</div>
                             <div className="item" onClick={this.onClickExplorePeople} >People</div>
                         </div>
+                    </div>
+
+                    <div className="ui right item" id="show-mobile-only" onClick={this.onClickExplore} >
+                        <i className="images big icon" />
+                    </div>
+
+                    <div className="ui right item" id="show-mobile-only" onClick={this.onClickExplorePeople} >
+                        <i className="users big icon" />
                     </div>
 
                     {/* <div className="ui right link item" onClick={this.onClickExplore} >
@@ -89,7 +97,7 @@ class LogoutNavigation extends React.Component {
                         </div>
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu" onMouseLeave={this.onMouseLeaveDropDown} >
-                            <div className="item" onClick={this.onClickProfile} >Profile</div>
+                            <div className="item" id="hide-mobile-only" onClick={this.onClickProfile} >Profile</div>
                             <div className="item" onClick={this.onClickLogout} >Logout</div>
                         </div>
                     </div>
