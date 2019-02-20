@@ -49,7 +49,7 @@ class OtherUserCard extends React.Component {
         else {
             img_url = <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
             header_text = <p className="header">{this.props.other_user.username}</p>
-            meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong name="Visited">{this.props.other_user_visited_destinations.length}</strong> cities</span> · <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong name="Followers">{this.props.other_user_followers.length}</strong> followers</span> · <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong name="Following">{this.props.other_user_following.length}</strong> following</span></div>
+            meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong name="Visited">{this.props.other_user_visited_destinations.length}</strong> cities</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong name="Followers">{this.props.other_user_followers.length}</strong> followers</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong name="Following">{this.props.other_user_following.length}</strong> following</span></div>
         }
 
         return (
