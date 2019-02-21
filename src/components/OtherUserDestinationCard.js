@@ -16,7 +16,7 @@ class OtherUserDestinationCard extends React.Component {
     }
 
     onClickButton = (event) => {
-        // console.log("OtherUserDestinationCard: clicked", event.target.getAttribute("name"))
+        console.log("OtherUserDestinationCard: clicked", event.target.getAttribute("name"))
         const clickedButton = event.target.getAttribute("name")
         switch (this.props.activeView) {
             case "Visited":
@@ -68,6 +68,10 @@ class OtherUserDestinationCard extends React.Component {
 
             case "Explore People":
                 // Click View Page Button or Follow Button
+                if (clickedButton === "View Page") {
+                    // console.log("this.props => ", this.props)
+                    this.props.setActiveView("Visited")
+                }
                 clickedButton === "View Page" ? this.getOtherUser() : this.postFollow()
                 break;
 
@@ -178,7 +182,7 @@ class OtherUserDestinationCard extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            // console.log("fetch response:", response)
+            console.log("fetch response:", response)
             this.props.setOtherUser(response)
             this.props.history.push(`/${response.user.username}`)
         })
