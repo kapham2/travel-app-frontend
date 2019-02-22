@@ -93,7 +93,7 @@ class LogoutNavigation extends React.Component {
                     
                     <div className="ui right dropdown item" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
                         <div className="ui mini circular image">
-                            <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt=""/>
+                            {this.props.avatar_url.length <= 16 ? <img src={this.props.avatar_url} alt=""/> : <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt=""/>}
                         </div>
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu" onMouseLeave={this.onMouseLeaveDropDown} >
