@@ -30,7 +30,7 @@ class UserCardModalUploadAvatar extends React.Component {
 
         return (
             <div className="ui small modal" name="modal-upload-avatar">
-                <i className="close icon"></i>
+                <i className="close icon" onClick={this.onClickModalCancelButton}></i>
                 <div className="header">
                     Upload Photo
                 </div>
@@ -40,13 +40,15 @@ class UserCardModalUploadAvatar extends React.Component {
                     </div>
 
                     <div className="description" name="modal-description" >
-                        <form className="form" name="modal-form" onSubmit={this.onSubmitForm} >
+                        {/* <form className="form" name="modal-form" onSubmit={this.onSubmitForm} >
                             <input type="file" name="modal-uploaded-file" /><br/><br/>
-                        </form>
+                        </form> */}
+                        Coming Soon!
                     </div>
                 </div>
                 <div className="actions">
-                    <div className="ui button" onClick={this.onClickModalOkButton} >OK</div>
+                    {/* <div className="ui button" onClick={this.onClickModalOkButton} >OK</div> */}
+                    <div className="ui button" onClick={this.onClickModalCancelButton} >OK</div>
                     <div className="ui button" onClick={this.onClickModalCancelButton} >Cancel</div>
                 </div>
             </div>
