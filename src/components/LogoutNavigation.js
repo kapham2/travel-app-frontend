@@ -54,6 +54,7 @@ class LogoutNavigation extends React.Component {
 
     render() {
         // console.log("LogoutNavigation: this.props =>", this.props)
+        console.log("LogoutNavigation: this.props =>", this.props.avatar_url)
 
         return (
             <div className="ui borderless menu fixed">
@@ -93,7 +94,7 @@ class LogoutNavigation extends React.Component {
                     
                     <div className="ui right dropdown item" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
                         <div className="ui mini circular image">
-                            {this.props.avatar_url.length <= 16 ? <img src={this.props.avatar_url} alt=""/> : <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt=""/>}
+                            {this.props.avatar_url.length <= 16 ? <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt=""/> : <img src={this.props.avatar_url} alt=""/>}
                         </div>
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu" onMouseLeave={this.onMouseLeaveDropDown} >

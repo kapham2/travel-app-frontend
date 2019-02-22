@@ -47,7 +47,7 @@ class OtherUserCard extends React.Component {
             meta_text = <div className="meta"><span><strong>{this.props.users_visited.length}</strong> visited</span></div>
         }
         else {
-            img_url = this.props.avatar_url.length <= 16 ? <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} /> : <img src={process.env.PUBLIC_URL + this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
+            img_url = this.props.avatar_url.length <= 16 ? <img src={process.env.PUBLIC_URL + this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} /> : <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
             header_text = <p className="header">{this.props.other_user.username}</p>
             meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong name="Visited">{this.props.other_user_visited_destinations.length}</strong> cities</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong name="Followers">{this.props.other_user_followers.length}</strong> followers</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong name="Following">{this.props.other_user_following.length}</strong> following</span></div>
         }
