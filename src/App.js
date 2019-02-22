@@ -14,19 +14,19 @@ class App extends Component {
 
   componentDidMount() {
     if (localStorage.getItem("token")) {
-      fetch('http://localhost:3333/api/v1/users/user', {
+      fetch('https://hello-world-app-backend.herokuapp.com/api/v1/users/user', {
         headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
       })
       .then(response => response.json())
       .then(response => this.props.setUser(response))
 
-      fetch('http://localhost:3333/api/v1/user_destinations', {
+      fetch('https://hello-world-app-backend.herokuapp.com/api/v1/user_destinations', {
         headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
       })
       .then(response => response.json())
       .then(response => this.props.setUserDestinations(response))
 
-      fetch('http://localhost:3333/api/v1/follows', {
+      fetch('https://hello-world-app-backend.herokuapp.com/api/v1/follows', {
         headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
       })
       .then(response => response.json())
@@ -36,8 +36,8 @@ class App extends Component {
   
   render() {
     // console.log("App: this.props =>", this.props)
-    console.log("App: PUBLIC_URL =>", process.env.PUBLIC_URL)
-    return (
+
+return (
       <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={LoginContainer} />

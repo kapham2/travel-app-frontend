@@ -40,7 +40,7 @@ class OtherUserContainer extends React.Component {
         }
         else if (this.props.match.url.split("/")[1] === "places") {
             this.setActiveView("Destination")
-            fetch(`http://localhost:3333/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
+            fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/destinations-by-city/${this.props.match.url.slice(8)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
             })
             .then(response => {
@@ -63,7 +63,7 @@ class OtherUserContainer extends React.Component {
         // if (this.props.match.url.split("/")[1] === :username)
         else {
             this.setActiveView("Visited")
-            fetch(`http://localhost:3333/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
+            fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/other-users-by-username/${this.props.match.url.slice(1)}`, {
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
             })
             .then(response => {

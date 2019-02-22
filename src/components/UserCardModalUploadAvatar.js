@@ -15,7 +15,7 @@ class UserCardModalUploadAvatar extends React.Component {
             const formData = new FormData()
             formData.append('user[avatar]', files[0])
     
-            fetch(`http://localhost:3333/api/v1/users/${this.props.user.id}`, {
+            fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/users/${this.props.user.id}`, {
                 method: 'PATCH',
                 headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
                 body: formData

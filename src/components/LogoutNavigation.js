@@ -54,7 +54,6 @@ class LogoutNavigation extends React.Component {
 
     render() {
         // console.log("LogoutNavigation: this.props =>", this.props)
-        console.log("LogoutNavigation: this.props =>", this.props.avatar_url)
 
         return (
             <div className="ui borderless menu fixed">

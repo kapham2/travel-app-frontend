@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
     }
 
     authenticate = (username, password) => {
-        fetch('http://localhost:3333/api/v1/login', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/login', {
             method: 'POST',
             headers: { 'Content-type' : 'application/json' },
             body: JSON.stringify({
@@ -45,7 +45,7 @@ class LoginForm extends React.Component {
     }
 
     setUser = (response) => {
-        console.log("LoginForm: response =>", response)
+        // console.log("LoginForm: response =>", response)
         this.props.setUser(response)
         localStorage.setItem('token', response.token)
         this.props.history.push(`/${response.user.username}`)
@@ -57,7 +57,7 @@ class LoginForm extends React.Component {
     }
 
     getUserDestinations = () => {
-        fetch('http://localhost:3333/api/v1/user_destinations', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/user_destinations', {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
         })
         .then(response => response.json())
@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
     }
 
     getFollows = () => {
-        fetch('http://localhost:3333/api/v1/follows', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/follows', {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` },
         })
         .then(response => response.json())
@@ -79,7 +79,7 @@ class LoginForm extends React.Component {
     }
     
     signUp = (username, password) => {
-        fetch('http://localhost:3333/api/v1/users', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/users', {
             method: 'POST',
             headers: { 'Content-type' : 'application/json' },
             body: JSON.stringify({

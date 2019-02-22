@@ -83,7 +83,7 @@ class OtherUserDestinationCard extends React.Component {
 
     postUserDestination = (visited) => {
         // console.log("ExplorePlacesPeopleCard: postUserDestination => ")
-        fetch('http://localhost:3333/api/v1/user_destinations', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/user_destinations', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ class OtherUserDestinationCard extends React.Component {
     deleteUserDestination = (fromTab) => {
         // console.log("OtherUserDestinationCard: deleteUserDestination => ")
         const userDestination = this.props.user_destinations.find(user_destination => user_destination.user_id === this.props.user.id && user_destination.destination_id === this.props.item.id)
-        fetch(`http://localhost:3333/api/v1/user_destinations/${userDestination.id}`, {
+        fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/user_destinations/${userDestination.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -128,7 +128,7 @@ class OtherUserDestinationCard extends React.Component {
         // console.log("OtherUserDestinationCard: postFollow => ")
         // console.log(this.props.user, this.props.user.id)
         // console.log(this.props.item, this.props.item.id)
-        fetch('http://localhost:3333/api/v1/follows', {
+        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/follows', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -155,7 +155,7 @@ class OtherUserDestinationCard extends React.Component {
         const follower_id = fromTab === "Following" ? this.props.user.id : this.props.item.id
         const following_id = fromTab === "Following" ? this.props.item.id : this.props.user.id
         const follow = this.props.follows.find(follow => follow.follower_id === follower_id && follow.following_id === following_id)
-        fetch(`http://localhost:3333/api/v1/follows/${follow.id}`, {
+        fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/follows/${follow.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ class OtherUserDestinationCard extends React.Component {
     getOtherUser = () => {
         // console.log("OtherUserDestinationCard: getOtherUser => ")
 
-        fetch(`http://localhost:3333/api/v1/other-users/${this.props.item.id}`, {
+        fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/other-users/${this.props.item.id}`, {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
         })
         .then(response => response.json())
@@ -192,7 +192,7 @@ class OtherUserDestinationCard extends React.Component {
     getDestination = () => {
         // console.log("OtherUserDestinationCard: getDestination => ")
 
-        fetch(`http://localhost:3333/api/v1/destinations/${this.props.item.id}`, {
+        fetch(`https://hello-world-app-backend.herokuapp.com/api/v1/destinations/${this.props.item.id}`, {
             headers: { 'Authorization' : `Bearer ${localStorage.getItem("token")}` }
         })
         .then(response => response.json())
