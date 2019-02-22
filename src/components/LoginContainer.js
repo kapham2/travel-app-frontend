@@ -10,7 +10,7 @@ class LoginContainer extends React.Component {
             <div className="ui centered grid login-grid">
                 <div className="stretched row middle aligned">
                     <div className="column login-column computer only tablet only">
-                        <img className="ui rounded bordered image" src="/helloworld.jpg" alt="" />
+                        <img className="ui rounded bordered image" src={process.env.PUBLIC_URL + "/helloworld.jpg"} alt="" />
                     </div>
 
                     <div className="column login-column">

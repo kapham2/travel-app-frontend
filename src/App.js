@@ -36,8 +36,9 @@ class App extends Component {
   
   render() {
     // console.log("App: this.props =>", this.props)
+    console.log("App: PUBLIC_URL =>", process.env.PUBLIC_URL)
     return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route exact path="/" component={LoginContainer} />
           <PrivateRoute exact path="/explore/cities" component={OtherUserContainer} />

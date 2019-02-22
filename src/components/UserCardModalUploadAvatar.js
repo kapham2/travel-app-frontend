@@ -36,7 +36,7 @@ class UserCardModalUploadAvatar extends React.Component {
                 </div>
                 <div className="image content">
                     <div className="ui small circular image">
-                            <img src={this.props.avatar_url} alt="" />
+                            <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt="" />
                     </div>
 
                     <div className="description" name="modal-description" >

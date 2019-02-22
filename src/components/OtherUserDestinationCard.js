@@ -16,7 +16,7 @@ class OtherUserDestinationCard extends React.Component {
     }
 
     onClickButton = (event) => {
-        console.log("OtherUserDestinationCard: clicked", event.target.getAttribute("name"))
+        // console.log("OtherUserDestinationCard: clicked", event.target.getAttribute("name"))
         const clickedButton = event.target.getAttribute("name")
         switch (this.props.activeView) {
             case "Visited":
@@ -182,7 +182,7 @@ class OtherUserDestinationCard extends React.Component {
         })
         .then(response => response.json())
         .then(response => {
-            console.log("fetch response:", response)
+            // console.log("fetch response:", response)
             this.props.setOtherUser(response)
             this.props.history.push(`/${response.user.username}`)
         })
@@ -300,13 +300,20 @@ class OtherUserDestinationCard extends React.Component {
                 <div className="blurring dimmable image">
                     <div className="ui dimmer" onMouseLeave={this.onMouseLeaveCard} >
                         <div className="content">
+                            {/* <div id="border-height">
+                                <h3><strong>{content_header}, {content_meta}</strong></h3>
+                                <p>
+                                    {"350 characters max blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post blog post"}
+                                </p>
+                            </div>
+                            <br /> */}
                             <div className="center">
                                 <div className="ui inverted button" id="button1" name={button1} onClick={this.onClickButton} >{button1}</div>
                                 <div className="ui inverted button" id="button2" name={button2} onClick={this.onClickButton} >{button2}</div>
                             </div>
                         </div>
                     </div>
-                    <img className="card-image" src={image_url} alt="" onMouseOver={this.onMouseOverCard}/>
+                    <img className="card-image" src={process.env.PUBLIC_URL + image_url} alt="" onMouseOver={this.onMouseOverCard}/>
                 </div>
 
                 <div className="content">

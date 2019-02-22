@@ -22,7 +22,7 @@ class NotFoundContainer extends React.Component {
                             <div className="item">
 
                                 <div className="ui small circular blurring dimmable image">
-                                    <img src="/cake.jpg" alt="" />
+                                    <img src={process.env.PUBLIC_URL + "/cake.jpg"} alt="" />
                                 </div>
 
                                 <div className="content">
@@ -44,7 +44,7 @@ class NotFoundContainer extends React.Component {
                 </div>
 
                 <div className="row">
-                    <img className="ui rounded bordered centered image" src="/cake.gif" alt="" />
+                    <img className="ui rounded bordered centered image" src={process.env.PUBLIC_URL + "/cake.gif"} alt="" />
                 </div>
 
             </div>

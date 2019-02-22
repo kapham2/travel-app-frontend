@@ -32,22 +32,22 @@ class OtherUserCard extends React.Component {
         let meta_text
 
         if (this.props.activeView === "Explore Cities") {
-            img_url = <img src="/helloworldsquare.jpg" alt="" />
+            img_url = <img src={process.env.PUBLIC_URL + "/helloworldsquare.jpg"} alt="" />
             header_text = <p className="header">Explore Cities</p>
             meta_text = <div className="meta"><span><strong>{this.props.more_destinations.length}</strong> cities</span></div>
         }
         else if (this.props.activeView === "Explore People") {
-            img_url = <img src="/helloworldsquare.jpg" alt="" />
+            img_url = <img src={process.env.PUBLIC_URL + "/helloworldsquare.jpg"} alt="" />
             header_text = <p className="header">Explore People</p>
             meta_text = <div className="meta"><span><strong>{this.props.more_users.length}</strong> people</span></div>
         }
         else if (this.props.activeView === "Destination") {
-            img_url = <img src={this.props.photo_url} alt="" />
+            img_url = <img src={process.env.PUBLIC_URL + this.props.photo_url} alt="" />
             header_text = <p className="header">{this.props.destination.city}, {this.props.destination.country}</p>
             meta_text = <div className="meta"><span><strong>{this.props.users_visited.length}</strong> visited</span></div>
         }
         else {
-            img_url = <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
+            img_url = <img src={process.env.PUBLIC_URL + this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} />
             header_text = <p className="header">{this.props.other_user.username}</p>
             meta_text = <div className="meta"><span className="cursor-pointer" name="Visited" onClick={this.onClickMenu}><strong name="Visited">{this.props.other_user_visited_destinations.length}</strong> cities</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Followers" onClick={this.onClickMenu}><strong name="Followers">{this.props.other_user_followers.length}</strong> followers</span> <br id="show-mobile-only" /> <span className="cursor-pointer" name="Following" onClick={this.onClickMenu}><strong name="Following">{this.props.other_user_following.length}</strong> following</span></div>
         }
@@ -61,7 +61,6 @@ class OtherUserCard extends React.Component {
                             <div className="ui dimmer" onMouseLeave={this.onMouseLeaveAvatar} >
                                 <div className="ui inverted button" onClick={this.onClickUpdateButton} >Update</div>
                             </div>
-                            {/* <img src={this.props.other_avatar_url} alt="" onMouseOver={this.onMouseOverAvatar} /> */}
                             {img_url}
                         </div>
 
