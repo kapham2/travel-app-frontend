@@ -51,7 +51,7 @@
   }
 
   #show-background-mobile-only {
-    background-image: url('/helloworld.jpg');
+    background-image: url('https://kapham2.github.io/hello-world-app-frontend/helloworld.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
