@@ -26,7 +26,7 @@ class LoginForm extends React.Component {
             headers: { 'Content-type' : 'application/json' },
             body: JSON.stringify({
                 user: {
-                    username: username,
+                    username: username.toLowerCase(),
                     password: password
                 }
             })
@@ -84,7 +84,7 @@ class LoginForm extends React.Component {
             headers: { 'Content-type' : 'application/json' },
             body: JSON.stringify({
                 user: {
-                    username: username,
+                    username: username.toLowerCase(),
                     password: password
                 }
             })
