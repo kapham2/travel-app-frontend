@@ -80,28 +80,31 @@ class LogoutNavigation extends React.Component {
                     </div>
 
                     <div className="ui right item" id="show-mobile-only" onClick={this.onClickExplore} >
-                        <i className="images big icon" />
+                        <i className="images large icon" />
                     </div>
 
                     <div className="ui right item" id="show-mobile-only" onClick={this.onClickExplorePeople} >
-                        <i className="users big icon" />
+                        <i className="users large icon" />
                     </div>
 
                     {/* <div className="ui right link item" onClick={this.onClickExplore} >
                         Explore
                     </div> */}
                     
-                    <div className="ui right dropdown item" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
+                    <div className="ui right dropdown item" id="hide-mobile-only" onClick={this.onClickDropDown} onMouseLeave={this.onMouseLeaveDropDown}>
                         <div className="ui mini circular image">
                             {this.props.avatar_url.length <= 16 ? <img src={process.env.PUBLIC_URL + this.props.avatar_url} alt=""/> : <img src={this.props.avatar_url} alt=""/>}
                         </div>
                         <i className="dropdown icon" />
                         <div className="menu transition hidden" name="dropdown-menu" onMouseLeave={this.onMouseLeaveDropDown} >
-                            <div className="item" id="hide-mobile-only" onClick={this.onClickProfile} >Profile</div>
+                            <div className="item" onClick={this.onClickProfile} >Profile</div>
                             <div className="item" onClick={this.onClickLogout} >Logout</div>
                         </div>
                     </div>
 
+                    <div className="ui right item" id="show-mobile-only" onClick={this.onClickLogout} >
+                        <i className="sign-out large icon" />
+                    </div>
                 </div>
             </div>
         )
