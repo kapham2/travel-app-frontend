@@ -79,27 +79,34 @@ class LoginForm extends React.Component {
     }
     
     signUp = (username, password) => {
-        fetch('https://hello-world-app-backend.herokuapp.com/api/v1/users', {
-            method: 'POST',
-            headers: { 'Content-type' : 'application/json' },
-            body: JSON.stringify({
-                user: {
-                    username: username.toLowerCase(),
-                    password: password
+        if (username.includes(" ") || /[~`!@#$%^&*()\-+={[}\]|\\:;"'<,>.?/]/g.test(username)) {
+            // if username is not valid then display error message
+            this.setError({error: "Username can't include special characters"})
+        }
+        else
+        {
+            fetch('https://hello-world-app-backend.herokuapp.com/api/v1/users', {
+                method: 'POST',
+                headers: { 'Content-type' : 'application/json' },
+                body: JSON.stringify({
+                    user: {
+                        username: username.toLowerCase(),
+                        password: password
+                    }
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                }
+                else {
+                    throw response
                 }
             })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json()
-            }
-            else {
-                throw response
-            }
-        })
-        .then(response => this.setUser(response))
-        .then(this.getUserDestinationsAndFollows)
-        .catch(response => response.json().then(response => this.setError(response)))
+            .then(response => this.setUser(response))
+            .then(this.getUserDestinationsAndFollows)
+            .catch(response => response.json().then(response => this.setError(response)))
+        }
     }
 
     onClickLink = () => {
