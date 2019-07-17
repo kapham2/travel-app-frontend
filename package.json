@@ -5,13 +5,18 @@
   "homepage": "https://kapham2.github.io/hello-world-app-frontend/",
   "dependencies": {
     "gh-pages": "^2.0.1",
+    "handlebars": "^4.1.2",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.14",
+    "lodash.template": "^4.5.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^2.1.5",
     "redux": "^4.0.1",
-    "semantic-ui-css": "^2.4.1"
+    "semantic-ui-css": "^2.4.1",
+    "webpack-dev-server": "^3.7.2"
   },
   "scripts": {
     "start": "react-scripts start",
