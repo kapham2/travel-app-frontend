@@ -5,7 +5,7 @@
   "homepage": "https://kapham2.github.io/hello-world-app-frontend/",
   "dependencies": {
     "gh-pages": "^2.0.1",
-    "handlebars": "^4.1.2",
+    "handlebars": "^4.3.0",
     "js-yaml": "^3.13.1",
     "lodash": "^4.17.14",
     "lodash.template": "^4.5.0",
